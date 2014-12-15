@@ -1,0 +1,18 @@
+{
+  "name": "MOSH",
+  "version": "0.0.2",
+  "authors": [
+    "David Boling <kadowki@gmail.com>"
+  ],
+  "main": "client/index.js",
+  "license": "MIT",
+  "dependencies": {
+    "angular": "~1.3.3",
+    "angular-ui-router": "~0.2.12",
+    "underscore": "~1.7.0",
+    "jquery": "~2.1.1",
+    "fontawesome": "~4.2.0",
+    "ng-file-upload": "~2.0.4",
+    "skeleton": "~2.0.1"
+  }
+}

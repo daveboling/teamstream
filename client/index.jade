@@ -1,0 +1,33 @@
+doctype html
+//if IE 9
+  html.lt-ie10(lang='en')
+html(ng-app='mosh', lang='en')
+  head
+    meta(charset='utf-8')
+    meta(name='viewport', content='width=device-width, initial-scale=1.0')
+    title Mosh
+    link(rel='stylesheet', href='/vendor/fontawesome/css/font-awesome.css')
+    link(rel='stylesheet', href='/vendor/bootstrap/bootstrap.min.css')
+    link(rel='stylesheet', href='/index.css')
+    link(rel='stylesheet', href='views/home/home.css')
+  body
+    .container
+      .row
+        .col-xs-12
+          include views/nav/nav
+      .row
+        .col-xs-12
+          div(ui-view)
+
+    script(src='/vendor/jquery/dist/jquery.js')
+    script(src='/vendor/angular/angular.js')
+    script(src='/vendor/angular-ui-router/release/angular-ui-router.js')
+    script(src='/vendor/ng-file-upload/angular-file-upload-all.min.js')
+    script(src='/vendor/underscore/underscore.js')
+
+    script(src='/index.js')
+    script(src='/models/user.js')
+    script(src='/views/users/users.js')
+    script(src='/views/home/home.js')
+    script(src='/views/nav/nav.js')
+
