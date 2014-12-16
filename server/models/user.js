@@ -1,7 +1,7 @@
 'use strict';
 
 var bcrypt  = require('bcrypt'),
-    pg      = require('../postgres/manager');
+    pg      = require('../config/postgres/manager');
 
 function User(obj){
   this.username = obj.username;

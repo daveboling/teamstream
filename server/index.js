@@ -2,9 +2,9 @@
 
 var Hapi         = require('hapi'),
   server         = new Hapi.Server(),
-  routes         = require('./routes/config/routes'),
-  plugins        = require('./routes/config/plugins'),
-  authentication = require('./routes/config/authentication');
+  routes         = require('./routes'),
+  plugins        = require('./config/plugins'),
+  authentication = require('./config/authentication');
 
 //server config
 server.connection({

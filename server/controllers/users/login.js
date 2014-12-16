@@ -1,10 +1,10 @@
 'use strict';
 
 var Joi  = require('joi'),
-    User = require('../../../models/user');
+    User = require('../../models/user');
 
 module.exports = {
-  description: 'Register a User',
+  description: 'Login a User',
   tags:['users'],
   validate: {
     payload: {
@@ -14,9 +14,10 @@ module.exports = {
   },
   auth: false,
   handler: function(request, reply){
-    console.log(request.payload);
-    User.register(request.payload, function(err){
-      reply().code(err ? 400 : 200);
+    User.login(request.payload, function(user){
+      if(!user){return reply().code(401);}
+      request.auth.session.set(user);
+      reply(user);
     });
   }
 };
