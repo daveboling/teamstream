@@ -10,5 +10,5 @@ nav(role="navigation", ng-controller='NavCtrl')
            li: a(ui-sref='login') Login
          ul.right(ng-show='rootuser.username')
            li: a(ui-sref='home') Home
-           li
-           li: a(ng-click='logout()'): img(ng-src='{{rootuser.avatar}}')
+           li: a(ui-sref='dashboard') Dashboard
+           li: a(ng-click='logout()') {{rootuser.username}}
