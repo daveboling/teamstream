@@ -1,7 +1,8 @@
 --drop all tables
-drop table admins;
+drop table collaborators;
 drop table attachments;
+drop table replys;
 drop table segments;
-drop table projects;
 drop table streams;
+drop table projects;
 drop table users;

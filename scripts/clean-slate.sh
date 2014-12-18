@@ -1,18 +1,19 @@
 #!/bin/bash
 
 #drop tables
-psql $1 -f ./drop.sql mosh
+psql $1 -f ./drop.sql team_stream
 
 #recreate tables
-psql $1 -f ../db/tables/users.sql mosh
-psql $1 -f ../db/tables/projects.sql mosh
-psql $1 -f ../db/tables/streams.sql mosh
-psql $1 -f ../db/tables/segments.sql mosh
-psql $1 -f ../db/tables/admins.sql mosh
-psql $1 -f ../db/tables/attachments.sql mosh
+psql $1 -f ../db/tables/users.sql team_stream
+psql $1 -f ../db/tables/projects.sql team_stream
+psql $1 -f ../db/tables/streams.sql team_stream
+psql $1 -f ../db/tables/segments.sql team_stream
+psql $1 -f ../db/tables/attachments.sql team_stream
+psql $1 -f ../db/tables/replys.sql team_stream
+psql $1 -f ../db/tables/collaborators.sql team_stream
 
 #create data
-psql $1 -f ./data.sql mosh
+psql $1 -f ./data.sql team_stream
 
 echo -e "The slate has been cleaned."
 echo -e "Query responsibly."
