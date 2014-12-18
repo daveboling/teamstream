@@ -8,7 +8,6 @@ delete from users; --this it to offset the sequence
 insert into users (id, username, password) values (1, 'bob', '$2a$08$Ekv2PGTlRzMw3w4qew.eEObmFEKJZfCSE7Lu6PGU22xmUknknc1Kq'); --password 1234 
 insert into users (id, username, password) values (2, 'sue', '$2a$08$Ekv2PGTlRzMw3w4qew.eEObmFEKJZfCSE7Lu6PGU22xmUknknc1Kq'); --password 1234
 
-
 --project inserts
 insert into projects (project_name, owner_id) values ('Bob Project', 1);
 delete from projects; --offset sequence

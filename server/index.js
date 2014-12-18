@@ -7,10 +7,7 @@ var Hapi         = require('hapi'),
   authentication = require('./config/authentication');
 
 //server config
-server.connection({
-  host: '0.0.0.0',
-  port: process.env.PORT
-});
+server.connection({port: process.env.PORT});
 
 //register server plugins
 server.register(plugins, function(){
