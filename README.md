@@ -1,3 +1,2 @@
-[![Build Status](https://travis-ci.org/kadowki/mosh.svg)](https://travis-ci.org/kadowki/mosh)[![Coverage Status](https://coveralls.io/repos/kadowki/mosh/badge.png)](https://coveralls.io/r/kadowki/mosh)
-
+[![Build Status](https://travis-ci.org/kadowki/teamstream.svg)](https://travis-ci.org/kadowki/teamstream)[![Coverage Status](https://coveralls.io/repos/kadowki/teamstream/badge.png)](https://coveralls.io/r/kadowki/teamstream)
 ###teamstream
