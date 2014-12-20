@@ -31,7 +31,7 @@ describe('Segment', function(){
 
   describe('.create', function(){
     it('should create a new segment', function(done){
-      //Bob adds a segment to stream in his project
+      //Bob adds a segment to a stream in his project
       var payload = {streamId: 2, body: 'Test body.'};
       Segment.create(payload, {id: 1}, function(err, results){
         expect(err).to.be.null;
