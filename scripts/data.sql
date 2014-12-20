@@ -9,12 +9,13 @@ insert into users (id, username, password) values (1, 'bob', '$2a$08$Ekv2PGTlRzM
 insert into users (id, username, password) values (2, 'sue', '$2a$08$Ekv2PGTlRzMw3w4qew.eEObmFEKJZfCSE7Lu6PGU22xmUknknc1Kq'); --password 1234
 
 --project inserts
-insert into projects (project_name, owner_id) values ('Bob Project', 1);
+insert into projects (project_name, owner_id) values ('dumby', 1);
+insert into projects (project_name, owner_id) values ('dumby', 1);
 delete from projects; --offset sequence
 
 insert into projects (id, project_name, owner_id) values (1, 'Bob Project', 1);
+insert into projects (id, project_name, owner_id) values (2, 'Sue Project', 2);
 insert into projects (project_name, owner_id) values ('Bob Other Project', 1);
-insert into projects (project_name, owner_id) values ('Sue Project', 2);
 
 
 --collaborators inserts (adds Sue as a collaborator on Bob Project)
