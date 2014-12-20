@@ -1,17 +1,23 @@
 {
-  "name": "MOSH",
-  "version": "0.0.2",
-  "description": "MOSH - Collaboration simplified.",
+  "name": "teamstream",
+  "version": "0.0.3",
+  "description": "teamstream - collaboration simplified.",
   "engines": {
     "node": "0.10.x"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/kadowki/mosh"
+    "url": "https://github.com/kadowki/team_stream"
+  },
+  "bin": {
+    "coveralls": "./node_modules/coveralls/bin/coveralls.js"
   },
   "scripts": {
     "start": "node server/index.js",
-    "postinstall": "grunt deploy"
+    "postinstall": "grunt deploy",
+    "syntax": "grunt build",
+    "test": "make test",
+    "coveralls": "make test-cov | coveralls"
   },
   "author": "David Boling <kadowk@igmail.com>",
   "license": "MIT",
@@ -40,5 +46,10 @@
     "lout": "^6.0.1",
     "pg": "^4.0.0",
     "request": "^2.51.0"
+  },
+  "devDependencies": {
+    "chai": "^1.10.0",
+    "lab": "^5.1.0",
+    "mocha": "^2.0.1"
   }
 }
