@@ -12,7 +12,7 @@ script:
   - npm test
 before_script:
   - psql -c 'create database team_stream;' -U postgres
-  - cd scripts/; ./clean-slate.sh team_stream; cd ../..;
+  - cd scripts/; ./clean-slate.sh team_stream; cd ..;
 after_script:
   - npm run coveralls
 env:
