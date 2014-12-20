@@ -17,7 +17,7 @@ var expect     = require('chai').expect,
 
 describe('Project', function(){
   beforeEach(function(done){
-     cp.execFile(__dirname + '/../../scripts/clean-slate.sh', [db], {cwd:__dirname + '/../scripts'}, function(err, stdout, stderr){
+     cp.execFile(__dirname + '/../../scripts/clean-slate.sh', [db], {cwd:__dirname + '/../../scripts'}, function(err, stdout, stderr){
        done();
      });
   });
