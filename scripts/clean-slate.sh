@@ -16,6 +16,7 @@ psql $1 -f ../db/tables/collaborators.sql
 psql $1 -f ../db/functions/get_streams.sql
 psql $1 -f ../db/functions/get_projects.sql
 psql $1 -f ../db/functions/get_segments.sql
+psql $1 -f ../db/functions/get_replys.sql
 
 
 #create data

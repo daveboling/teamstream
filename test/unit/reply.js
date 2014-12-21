@@ -39,4 +39,13 @@ describe('Reply', function(){
       });
     });
   });
+
+  describe('.populate', function(){
+    it('should get all replys for a certain segment', function(done){
+      Reply.populate(1, function(err, results){
+        expect(err).to.be.null;
+        done();
+      });
+    });
+  });
 });
