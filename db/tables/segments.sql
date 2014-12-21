@@ -3,5 +3,6 @@ create table segments(
   creator integer not null references users(id),
   body text not null,
   stream_id integer not null references streams(id),
-  sort_order integer null
+  sort_order integer null,
+  date_created timestamp not null default now()
 );

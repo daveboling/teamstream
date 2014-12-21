@@ -9,4 +9,10 @@ Segment.create = function(obj, user, cb){
   pg.query('insert into segments (creator, stream_id, body) values ($1, $2, $3)', [user.id, obj.streamId, obj.body], cb);
 };
 
+Segment.getAll = function(obj, cb){
+  pg.query('select * from get_segments($1)', [obj.sid], cb);
+};
+
+
+
 module.exports = Segment;

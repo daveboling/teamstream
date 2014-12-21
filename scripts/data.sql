@@ -35,10 +35,12 @@ insert into streams (project_id, name) values (1, 'Stream Three');
 --segment inserts
 insert into segments (creator, stream_id, body) values (2, 1, '');
 insert into segments (creator, stream_id, body) values (2, 1, '');
+insert into segments (creator, stream_id, body) values (2, 1, '');
 delete from segments; --offset for sequence
 
 insert into segments (id, creator, stream_id, body) values (1, 2, 1, 'Added my PDF file to this stream for everyone to read');
-insert into segments (id, creator, stream_id, body) values (2, 1, 2, 'It is coming along.');
+insert into segments (id, creator, stream_id, body) values (2, 2, 1, 'Good, I will read it soon.');
+insert into segments (id, creator, stream_id, body) values (3, 1, 2, 'It is coming along.');
 
 --replys inserts
 insert into replys (creator, segment_id, body) values (1, 1, 'Thank you Sue, I will read it very soon.');

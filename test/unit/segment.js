@@ -39,4 +39,13 @@ describe('Segment', function(){
       });
     });
   });
+
+  describe('.getAll', function(){
+    it('should get all segments for a specific stream', function(done){
+      Segment.getAll({sid: 1}, function(err, results){
+        expect(err).to.be.null;
+        done();
+      });
+    });
+  });
 });
