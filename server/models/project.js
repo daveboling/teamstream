@@ -12,7 +12,7 @@ Project.create = function(obj, user, cb){
 
 //display projects
 Project.all = function(){
-  //this will need joins
+  //this will need join on collaborators and user w/ gravatar images
 
 };
 
