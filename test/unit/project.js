@@ -43,9 +43,18 @@ describe('Project', function(){
   describe('.all', function(){
     it('should get all projects for a logged in user', function(done){
       Project.all({id: 1}, function(err, results){
-        console.log(results.rows);
         expect(err).to.be.null;
         expect(results.rows.length).to.be.above(1);
+        done();
+      });
+    });
+  });
+
+  describe('.findOne', function(){
+    it('should get all projects for a logged in user', function(done){
+      Project.findOne({pid: 1}, function(project, streams){
+        expect(project.length).to.be.equal(1);
+        expect(streams).to.be.ok;
         done();
       });
     });

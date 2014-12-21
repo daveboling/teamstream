@@ -1,6 +1,7 @@
 'use strict';
 
-var pg = require('../config/postgres/manager');
+var pg     = require('../config/postgres/manager'),
+    Stream = require('./stream');
 
 function Project(){
 }
@@ -18,9 +19,12 @@ Project.all = function(user, cb){
 };
 
 //display single project
-Project.findOne = function(){
-  //this will need to be thought about a little bit
-
+Project.findOne = function(obj, cb){
+  pg.query('select * from projects where projects.id = $1', [obj.pid], function(errProj, project){
+    Stream.getAll(obj.pid, function(errStream, streams){
+      cb(project.rows, streams.rows);
+    });
+  });
 };
 
 module.exports = Project;
