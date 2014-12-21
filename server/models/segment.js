@@ -2,7 +2,7 @@
 
 var pg     = require('../config/postgres/manager'),
     async  = require('async'),
-    Reply = require('./Reply');
+    Reply  = require('./reply');
 
 function Segment(){
 }
