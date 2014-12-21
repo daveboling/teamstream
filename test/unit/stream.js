@@ -38,4 +38,18 @@ describe('Stream', function(){
       });
     });
   });
+
+  describe('.getAll', function(){
+    it('should get all streams for a certain project', function(done){
+      //Bob adds a stream to his project
+      var payload = {pid: 1};
+      Stream.getAll(payload.pid, function(err, results){
+        expect(err).to.be.null;
+        expect(results.rows.length).to.be.above(1);
+        done();
+      });
+    });
+  });
+
+
 });

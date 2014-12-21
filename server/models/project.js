@@ -12,11 +12,13 @@ Project.create = function(obj, user, cb){
 
 //display projects
 Project.all = function(){
+  //this will need joins
 
 };
 
 //display single project
 Project.findOne = function(){
+  //this will need to be thought about a little bit
 
 };
 
