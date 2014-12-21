@@ -3,10 +3,12 @@ RETURNS TABLE(id integer, project_name varchar, date_created timestamp, collabor
 BEGIN
 
 RETURN QUERY
-SELECT projects.id, projects.project_name, projects.date_created, array_agg(DISTINCT users.username)
-FROM projects, collaborators, users
-WHERE collaborators.user_id = uid OR projects.owner_id = uid
-GROUP BY projects.id, projects.owner_id, projects.project_name, projects.date_created;
+select p.id, p.project_name, p.date_created, array_agg(DISTINCT u.username)
+FROM projects p 
+LEFT OUTER JOIN collaborators c  ON p.id = c.project_id
+FULL OUTER JOIN users u on u.id = c.user_id
+WHERE p.owner_id = uid or c.user_id = uid
+GROUP BY p.id, p.owner_id, p.project_name, p.date_created;
 
 END;
 $$ LANGUAGE plpgsql;

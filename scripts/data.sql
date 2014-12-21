@@ -18,10 +18,10 @@ insert into projects (id, project_name, owner_id) values (1, 'Bob Project', 1);
 insert into projects (id, project_name, owner_id) values (2, 'Sue Project', 2);
 insert into projects (project_name, owner_id) values ('Bob Other Project', 1);
 
-
 --collaborators inserts (adds Sue as a collaborator on Bob Project)
 insert into collaborators (project_id, user_id) values (1, 2);
 insert into collaborators (project_id, user_id) values (1, 3);
+insert into collaborators (project_id, user_id) values (2, 3);
 
 --stream inserts
 insert into streams (project_id, name) values (1, 'null');
