@@ -11,9 +11,10 @@ Project.create = function(obj, user, cb){
 };
 
 //display projects
-Project.all = function(){
+Project.all = function(user, cb){
   //this will need join on collaborators and user w/ gravatar images
-
+  //emails to be added at a later time
+  pg.query('select * from get_projects($1)', [user.id], cb);
 };
 
 //display single project

@@ -39,4 +39,16 @@ describe('Project', function(){
       });
     });
   });
+
+  describe('.all', function(){
+    it('should get all projects for a logged in user', function(done){
+      Project.all({id: 1}, function(err, results){
+        console.log(results.rows);
+        expect(err).to.be.null;
+        expect(results.rows.length).to.be.above(1);
+        done();
+      });
+    });
+  });
+
 });

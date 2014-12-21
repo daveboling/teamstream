@@ -7,6 +7,7 @@ delete from users; --this it to offset the sequence
 
 insert into users (id, username, password) values (1, 'bob', '$2a$08$Ekv2PGTlRzMw3w4qew.eEObmFEKJZfCSE7Lu6PGU22xmUknknc1Kq'); --password 1234 
 insert into users (id, username, password) values (2, 'sue', '$2a$08$Ekv2PGTlRzMw3w4qew.eEObmFEKJZfCSE7Lu6PGU22xmUknknc1Kq'); --password 1234
+insert into users (id, username, password) values (3, 'jim', '$2a$08$Ekv2PGTlRzMw3w4qew.eEObmFEKJZfCSE7Lu6PGU22xmUknknc1Kq'); --password 1234
 
 --project inserts
 insert into projects (project_name, owner_id) values ('dumby', 1);
@@ -20,6 +21,7 @@ insert into projects (project_name, owner_id) values ('Bob Other Project', 1);
 
 --collaborators inserts (adds Sue as a collaborator on Bob Project)
 insert into collaborators (project_id, user_id) values (1, 2);
+insert into collaborators (project_id, user_id) values (1, 3);
 
 --stream inserts
 insert into streams (project_id, name) values (1, 'null');
