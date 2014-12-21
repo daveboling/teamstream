@@ -1,7 +1,7 @@
 (function(){
   'use strict';
 
-  angular.module('mosh', ['ui.router'])
+  angular.module('teamstream', ['ui.router'])
     .config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $urlRouterProvider){
       $urlRouterProvider.otherwise('/');
 

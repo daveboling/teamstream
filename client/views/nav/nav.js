@@ -1,7 +1,7 @@
 (function(){
   'use strict';
 
-  angular.module('mosh')
+  angular.module('teamstream')
     .controller('NavCtrl', ['$rootScope', '$scope', '$state', 'User', function($rootScope, $scope, $state, User){
       $scope.logout = function(){
         User.logout().then(function(){

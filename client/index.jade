@@ -1,13 +1,13 @@
 doctype html
 //if IE 9
   html.lt-ie10(lang='en')
-html(ng-app='mosh', lang='en')
+html(ng-app='teamstream', lang='en')
   head
     meta(charset='utf-8')
     meta(name='viewport', content='width=device-width, initial-scale=1.0')
-    title Mosh
+    title teamstream - collaboration simplified.
     link(rel='stylesheet', href='/vendor/fontawesome/css/font-awesome.css')
-    link(rel='stylesheet', href='/vendor/bootstrap/bootstrap.min.css')
+    link(rel='stylesheet', href='/vendor/bootstrap/dist/css/bootstrap.min.css')
     link(rel='stylesheet', href='/index.css')
     link(rel='stylesheet', href='views/home/home.css')
     link(rel='stylesheet', href='views/dash/dash.css')
@@ -27,8 +27,8 @@ html(ng-app='mosh', lang='en')
     script(src='/vendor/underscore/underscore.js')
 
     script(src='/index.js')
-    script(src='/models/user.js')
-    script(src='/models/dash.js')
+    script(src='/factories/user.js')
+    script(src='/factories/dash.js')
     script(src='/views/users/users.js')
     script(src='/views/dash/dash.js')
     script(src='/views/home/home.js')
