@@ -70,6 +70,12 @@ module.exports = function(grunt){
         dest: 'public',
         expand: true
       },
+      css: {
+        cwd: 'client',
+        src: ['**/*.css'],
+        dest: 'public',
+        expand: true
+      },
       assets: {
         cwd: 'client/assets',
         src: ['**/*'],
@@ -96,6 +102,6 @@ module.exports = function(grunt){
   grunt.loadNpmTasks('grunt-shell');
 
   grunt.registerTask('deploy', ['clean', 'build', 'shell:bower']);
-  grunt.registerTask('build', ['jshint:all', 'jscs', 'jade', 'less', 'copy:js', 'copy:assets', 'copy:favicon']);
+  grunt.registerTask('build', ['jshint:all', 'jscs', 'jade', 'less', 'copy:js', 'copy:css', 'copy:assets', 'copy:favicon']);
   grunt.registerTask('default', ['build', 'watch']);
 };
