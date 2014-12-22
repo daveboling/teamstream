@@ -1,22 +1,46 @@
 .row
   .col-xs-12
-    .streamViewHeader stream list
+    .streamViewHeader
     .row
-      .col-sm-6#stream-list
-        a.add(href='' ng-click='createStream = true')  add stream
-        //pre {{streamList | json}}
-        .stream-sector(ng-repeat='s in streamList' ng-click='getSegments(s.id)' ng-class='{"current-selected": selectedStream === {{s.id}}, "not-current": selectedStream !== {{s.id}}}') {{s.name}}
-          .stream-controls
-            a(href='') edit
-            a(href='') delete
-            a(href='') isolate
+      //STREAM LIST
+      .col-sm-6.sector-padding
+        #stream-list
+          a.add(href='' ng-click='createStream = true')  add stream
+          .stream-sector(ng-repeat='s in streamList' ng-click='getSegments(s.id)' ng-class='{"current-selected": selectedStream === {{s.id}}, "not-current": selectedStream !== {{s.id}}}') {{s.name}}
+            .stream-controls
+              a(href='') edit
+              a(href='') delete
+              a(href='') isolate
+      //STREAM VIEW
+      .col-sm-6.sector-padding
+        #stream-view
+          a.add(href='' ng-click='createSegment = true' ng-show='selectedStream') add segment
+          .segment(ng-repeat='s in segments')
+            .row.seg-top
+              .col-xs-10
+                .seg-created {{s.created_on | date}}
+              .col-xs-2
+                .seg-creator {{s.creator}}
+            .seg-body {{s.body}}
+            .seg-attachments(ng-hide='s.attachments[0] === null')
+              hr
+              h5 attachments:
+              .attachment(ng-repeat='a in s.attachments'): a(href='{{a}}') {{a}}
+            //TOGGLE REPLIES
+            .seg-messages
+              .hide-show(ng-click='showReplys($event)')
+                i.fa.fa-angle-double-down
+                i.fa.fa-angle-double-up(style='display: none')
+              .seg-reply(ng-repeat='r in s.replys')
+                .rep-top
+                  .col-xs-10
+                    .rep-created {{r.created_on | date}}
+                  .col-xs-2
+                    .rep-creator {{r.creator}}
+                .rep-body {{r.body}}
+              a(href='') reply
 
-      .col-sm-6#stream-view
-        a.add(href='' ng-click='createSegment = true' ng-show='selectedStream') add segment
-        
-        pre {{segments | json}}
-
-
+//MODALS
 #create-stream(ng-show='createStream')
   form(novalidate)
     .x(ng-click='createStream = false'): i.fa.fa-times
@@ -28,7 +52,7 @@
 #create-segment(ng-show='createSegment')
   form(novalidate)
     .x(ng-click='createSegment = false'): i.fa.fa-times
-    h4 Create Segment {{selectedStream}}
+    h4 Create Segment
     p Enter a body for this segment:
     textarea(type='text' ng-model='segmentForm.body')
     button.create(ng-click='createSegment = false;') Submit

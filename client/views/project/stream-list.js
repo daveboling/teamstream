@@ -39,6 +39,11 @@
 
     $scope.getStreams();
 
+    //UI RELATED
+    $scope.showReplys = function($event){
+      $($event.target).closest('.seg-messages').find('.seg-reply').toggle();
+      $($event.target).find('i').toggle();
+    };
 
   }]);
 })();
