@@ -5,7 +5,7 @@
       //STREAM LIST
       .col-sm-6.sector-padding
         #stream-list
-          a.add(href='' ng-click='createStream = true')  add stream
+          a.add(href='' ng-click='streamModal = true')  add stream
           .stream-sector(ng-repeat='s in streamList' ng-click='getSegments(s.id)' ng-class='{"current-selected": selectedStream === {{s.id}}, "not-current": selectedStream !== {{s.id}}}') {{s.name}}
             .stream-controls
               a(href='') edit
@@ -14,7 +14,7 @@
       //STREAM VIEW
       .col-sm-6.sector-padding
         #stream-view
-          a.add(href='' ng-click='createSegment = true' ng-show='selectedStream') add segment
+          a.add(href='' ng-click='segmentModal = true' ng-show='selectedStream') add segment
           .segment(ng-repeat='s in segments')
             .row.seg-top
               .col-xs-10
@@ -29,7 +29,9 @@
             //TOGGLE REPLIES
             .seg-messages
               .hide-show(ng-click='showReplys($event)')
+                span show replies &nbsp;
                 i.fa.fa-angle-double-down
+                span(style='display: none') hide replies &nbsp;
                 i.fa.fa-angle-double-up(style='display: none')
               .seg-reply(ng-repeat='r in s.replys')
                 .rep-top
@@ -41,20 +43,20 @@
               a(href='') reply
 
 //MODALS
-#create-stream(ng-show='createStream')
+#create-stream(ng-show='streamModal')
   form(novalidate)
-    .x(ng-click='createStream = false'): i.fa.fa-times
+    .x(ng-click='streamModal = false'): i.fa.fa-times
     h4 Create Stream
     p Enter a name for this stream:
     input(type='text' ng-model='streamForm.name')
-    button.create(ng-click='createStream = false;') Submit
+    button.create(ng-click='streamModal = false; createStream();') Submit
 
-#create-segment(ng-show='createSegment')
+#create-segment(ng-show='segmentModal')
   form(novalidate)
-    .x(ng-click='createSegment = false'): i.fa.fa-times
+    .x(ng-click='segmentModal = false'): i.fa.fa-times
     h4 Create Segment
     p Enter a body for this segment:
     textarea(type='text' ng-model='segmentForm.body')
-    button.create(ng-click='createSegment = false;') Submit
+    button.create(ng-click='segmentModal = false; createSegment();') Submit
 
 

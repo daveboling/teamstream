@@ -9,13 +9,21 @@
     }
 
     function getStreams(pid){
-      return $http.get('projects/'+pid+'/streams');
+      return $http.get('/projects/'+pid+'/streams');
     }
 
     function getSegments(sid){
-      return $http.get('projects/'+sid+'/segments');
+      return $http.get('/projects/'+sid+'/segments');
     }
 
-    return {getAll: getAll, getStreams: getStreams, getSegments: getSegments};
+    function createStream(stream){
+      return $http.post('/project/stream/create', stream);
+    }
+
+    function createSegment(segment){
+      return $http.post('/project/segment/create', segment);
+    }
+
+    return {getAll: getAll, getStreams: getStreams, getSegments: getSegments, createStream: createStream, createSegment: createSegment};
   }]);
 })();

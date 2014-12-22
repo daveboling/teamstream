@@ -5,7 +5,7 @@
   streamList.controller('StreamListCtrl', ['$scope', 'Project', function($scope, Project){
     $scope.streamList = [];
     $scope.selectedStream = null;
-    $scope.streamForm = {};
+    $scope.streamForm = {projectId: $scope.projectId};
     $scope.segmentForm = {};
 
     $scope.getStreams = function(){
@@ -37,12 +37,25 @@
       $scope.getSegments(sid);
     };
 
+    $scope.createStream = function(){
+      Project.createStream($scope.streamForm).then(function(res){
+        $scope.getStreams(); //needs to be taken out later
+      });
+    };
+
+    $scope.createSegment = function(){
+      $scope.segmentForm.streamId = $scope.selectedStream;
+      Project.createSegment($scope.segmentForm).then(function(res){
+        $scope.getSegments($scope.selectedStream);
+      });
+    };
+
     $scope.getStreams();
 
     //UI RELATED
     $scope.showReplys = function($event){
       $($event.target).closest('.seg-messages').find('.seg-reply').toggle();
-      $($event.target).find('i').toggle();
+      $($event.target).find('span, i').toggle();
     };
 
   }]);
