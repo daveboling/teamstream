@@ -3,7 +3,7 @@
 
   var dashFactory = angular.module('teamstream');
 
-  dashFactory.factory('Project', ['$http', function($http){
+  dashFactory.factory('Dashboard', ['$http', function($http){
     function getAll(){
       return $http.get('/projects');
     }

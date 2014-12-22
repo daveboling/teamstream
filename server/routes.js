@@ -7,5 +7,7 @@ module.exports = [
   {method: 'delete', path: '/logout',           config: require('./controllers/users/logout')},
   {method: 'get',    path: '/status',           config: require('./controllers/users/status')},
   {method: 'get',    path: '/projects',         config: require('./controllers/projects/get_projects')},
-  {method: 'get',    path: '/projects/{pid}',   config: require('./controllers/projects/get_project')}
+  {method: 'get',    path: '/projects/{pid}',   config: require('./controllers/projects/get_project')},
+  {method: 'get',    path: '/projects/{pid}/streams', config: require('./controllers/projects/get_streams')},
+  {method: 'get',    path: '/projects/{sid}/segments', config: require('./controllers/projects/get_segments')}
 ];

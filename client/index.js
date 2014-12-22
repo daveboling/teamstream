@@ -11,7 +11,7 @@
         .state('login',             {url:'/login',       templateUrl:'/views/users/users.html',       controller:'UsersCtrl'})
         .state('dashboard',         {url:'/dashboard',   templateUrl:'/views/dash/dash.html',         controller:'DashCtrl'})
         .state('project',           {
-          url:'/project',
+          url:'/project/{pid}',
           views: {
            '@': {
             templateUrl:'/views/project/project.html',
@@ -20,11 +20,11 @@
            'list@project': {
               templateUrl: '/views/project/stream-list.html',
               controller:'StreamListCtrl'
-            },
-           'view@project': {
-              templateUrl: '/views/project/stream-view.html',
-              controller:'StreamViewCtrl'
             }
+           // 'view@project': {
+           //    templateUrl: '/views/project/stream-view.html',
+           //    controller:'StreamViewCtrl'
+           //  }
           }
         });
       }])
