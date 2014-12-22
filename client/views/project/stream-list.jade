@@ -4,7 +4,13 @@
     .row
       .col-sm-6#stream-list
         a.add(href='' ng-click='createStream = true')  add stream
-        pre {{streamList | json}}
+        //pre {{streamList | json}}
+        .stream-sector(ng-repeat='s in streamList' ng-click='getSegments(s.id)') {{s.name}}
+          .stream-controls
+            a(href='') edit
+            a(href='') delete
+            a(href='') isolate
+
       .col-sm-6#stream-view
         a.add(href='' ng-click='createSegment = true' ng-show='selectedStream') add segment
         pre {{segments | json}}

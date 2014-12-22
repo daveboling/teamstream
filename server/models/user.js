@@ -10,7 +10,8 @@ function User(obj){
 User.register = function(obj, cb){
   var user = new User(obj);
   user.password = bcrypt.hashSync(obj.password, 8);
-  pg.query('insert into users (username, password) values ($1, $2) returning id', [user.username, user.password], function(err, results){
+  user.email = obj.email;
+  pg.query('insert into users (username, password, email) values ($1, $2, $3) returning id', [user.username, user.password, user.email], function(err, results){
     if(err){return cb(true);}
     cb(err);
   });

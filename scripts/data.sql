@@ -1,13 +1,13 @@
 --user inserts
-insert into users (username, password) values ('a1', 'b1');
-insert into users (username, password) values ('a2', 'b2');
-insert into users (username, password) values ('a3', 'b3');
+insert into users (username, password, email) values ('a1', 'b1', 'b@b');
+insert into users (username, password, email) values ('a2', 'b2', 'b@b');
+insert into users (username, password, email) values ('a3', 'b3', 'b@b');
 
 delete from users; --this it to offset the sequence
 
-insert into users (id, username, password) values (1, 'bob', '$2a$08$Ekv2PGTlRzMw3w4qew.eEObmFEKJZfCSE7Lu6PGU22xmUknknc1Kq'); --password 1234 
-insert into users (id, username, password) values (2, 'sue', '$2a$08$Ekv2PGTlRzMw3w4qew.eEObmFEKJZfCSE7Lu6PGU22xmUknknc1Kq'); --password 1234
-insert into users (id, username, password) values (3, 'jim', '$2a$08$Ekv2PGTlRzMw3w4qew.eEObmFEKJZfCSE7Lu6PGU22xmUknknc1Kq'); --password 1234
+insert into users (id, username, email, password) values (1, 'bob', 'kadowki@gmail.com', '$2a$08$Ekv2PGTlRzMw3w4qew.eEObmFEKJZfCSE7Lu6PGU22xmUknknc1Kq'); --password 1234 
+insert into users (id, username, email, password) values (2, 'sue', 'kadowki+sue@gmail.com', '$2a$08$Ekv2PGTlRzMw3w4qew.eEObmFEKJZfCSE7Lu6PGU22xmUknknc1Kq'); --password 1234
+insert into users (id, username, email, password) values (3, 'jim', 'kadowki+jim@gmail.com', '$2a$08$Ekv2PGTlRzMw3w4qew.eEObmFEKJZfCSE7Lu6PGU22xmUknknc1Kq'); --password 1234
 
 --project inserts
 insert into projects (project_name, owner_id) values ('dumby', 1);

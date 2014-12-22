@@ -1,3 +1,37 @@
+// TAG STREAM LIST
+.current-selected {
+  border: 3px solid black;
+}
+
+.not-current {
+  border: 1px solid black;
+}
+
+.stream-sector {
+  border: 1px solid black;
+  height: 40px;
+  width: 100%;
+  position: relative;
+
+  &:hover{
+    border: 3px solid black;
+    cursor: pointer;
+  }
+  
+  .stream-controls {
+    position: absolute;
+    right: 0;
+    top: 0;
+
+    a{
+      margin: 5px;
+    }
+  }
+
+}
+
+
+
 // TAG UI VIEWS
 div[ui-view='list'], div[ui-view='view']{
   width: 100%;

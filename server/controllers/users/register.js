@@ -9,12 +9,12 @@ module.exports = {
   validate: {
     payload: {
       username: Joi.string().min(3).max(12).required(),
-      password: Joi.string().min(3).required()
+      password: Joi.string().min(3).required(),
+      email: Joi.string().email().required()
     }
   },
   auth: false,
   handler: function(request, reply){
-    console.log(request.payload);
     User.register(request.payload, function(err){
       reply().code(err ? 400 : 200);
     });

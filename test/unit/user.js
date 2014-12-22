@@ -32,7 +32,7 @@ describe('User', function(){
 
   describe('.register', function(){
     it('should register a new user', function(done){
-      var payload = {username: 'sam', password: '1234'};
+      var payload = {username: 'sam', password: '1234', email: 'sam@gmail.com'};
       User.register(payload, function(err){
         expect(err).to.be.null;
         done();
@@ -40,7 +40,7 @@ describe('User', function(){
     });
 
     it('should NOT allow a new user if user already exists', function(done){
-      var payload = {username: 'bob', password: '1234'};
+      var payload = {username: 'bob', password: '1234', email: 'bob@gmail.com'};
       User.register(payload, function(err){
         expect(err).to.be.true;
         done();
