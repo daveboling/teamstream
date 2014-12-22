@@ -3,7 +3,27 @@
     .streamViewHeader stream list
     .row
       .col-sm-6#stream-list
+        a.add(href='' ng-click='createStream = true')  add stream
         pre {{streamList | json}}
       .col-sm-6#stream-view
+        a.add(href='' ng-click='createSegment = true' ng-show='selectedStream') add segment
         pre {{segments | json}}
+
+
+#create-stream(ng-show='createStream')
+  form(novalidate)
+    .x(ng-click='createStream = false'): i.fa.fa-times
+    h4 Create Stream
+    p Enter a name for this stream:
+    input(type='text' ng-model='streamForm.name')
+    button.create(ng-click='createStream = false;') Submit
+
+#create-segment(ng-show='createSegment')
+  form(novalidate)
+    .x(ng-click='createSegment = false'): i.fa.fa-times
+    h4 Create Segment {{selectedStream}}
+    p Enter a body for this segment:
+    textarea(type='text' ng-model='segmentForm.body')
+    button.create(ng-click='createSegment = false;') Submit
+
 
