@@ -6,10 +6,27 @@
       $urlRouterProvider.otherwise('/');
 
       $stateProvider
-        .state('home',     {url:'/',          templateUrl:'/views/home/home.html', controller:'HomeCtrl'})
-        .state('register', {url:'/register',  templateUrl:'/views/users/users.html', controller:'UsersCtrl'})
-        .state('login',    {url:'/login',     templateUrl:'/views/users/users.html', controller:'UsersCtrl'})
-        .state('dashboard',{url:'/dashboard', templateUrl:'/views/dash/dash.html', controller:'DashCtrl'});
+        .state('home',              {url:'/',            templateUrl:'/views/home/home.html',         controller:'HomeCtrl'})
+        .state('register',          {url:'/register',    templateUrl:'/views/users/users.html',       controller:'UsersCtrl'})
+        .state('login',             {url:'/login',       templateUrl:'/views/users/users.html',       controller:'UsersCtrl'})
+        .state('dashboard',         {url:'/dashboard',   templateUrl:'/views/dash/dash.html',         controller:'DashCtrl'})
+        .state('project',           {
+          url:'/project',
+          views: {
+           '@': {
+            templateUrl:'/views/project/project.html',
+            controller: 'ProjectCtrl'
+           },
+           'list@project': {
+              templateUrl: '/views/project/stream-list.html',
+              controller:'StreamListCtrl'
+            },
+           'view@project': {
+              templateUrl: '/views/project/stream-view.html',
+              controller:'StreamViewCtrl'
+            }
+          }
+        });
       }])
     .run(['$rootScope', '$http', function($rootScope, $http){
       $http.get('/status').then(function(response){
@@ -19,3 +36,5 @@
       });
     }]);
 })();
+
+
