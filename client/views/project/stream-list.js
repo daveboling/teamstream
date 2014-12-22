@@ -25,6 +25,7 @@
     };
 
     $scope.getSegments = function(sid){
+      $scope.selectedStream = sid;
       Project.getSegments(sid).then(function(res){
         $scope.segments = res.data;
       }, function(res){

@@ -5,7 +5,7 @@
       .col-sm-6#stream-list
         a.add(href='' ng-click='createStream = true')  add stream
         //pre {{streamList | json}}
-        .stream-sector(ng-repeat='s in streamList' ng-click='getSegments(s.id)') {{s.name}}
+        .stream-sector(ng-repeat='s in streamList' ng-click='getSegments(s.id)' ng-class='{"current-selected": selectedStream === {{s.id}}, "not-current": selectedStream !== {{s.id}}}') {{s.name}}
           .stream-controls
             a(href='') edit
             a(href='') delete
