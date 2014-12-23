@@ -1,3 +1,4 @@
+/*jshint camelcase: false */
 (function(){
   'use strict';
   var streamList = angular.module('teamstream');
@@ -8,6 +9,7 @@
     $scope.streamForm = {projectId: $scope.projectId};
     $scope.segmentForm = {};
     $scope.replyForm = {};
+    $scope.segments = [];
 
     $scope.getStreams = function(){
       Project.getStreams($scope.projectId).then(function(res){

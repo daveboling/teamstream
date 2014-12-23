@@ -14,9 +14,8 @@ module.exports = {
   },
   auth: {mode: 'required'},
   handler: function(request, reply){
-    console.log(request.payload);
-    Reply.create(request.payload, request.auth.credentials, function(err){
-      reply().code(err ? 400 : 200);
+    Reply.create(request.payload, request.auth.credentials, function(err, results){
+      reply(results.rows[0]).code(err ? 400 : 200);
     });
   }
 };
