@@ -4,6 +4,10 @@
   var projFactory = angular.module('teamstream');
 
   projFactory.factory('Project', ['$http', function($http){
+    function findOne(projectId){
+      return $http.get('/project/'+projectId);
+    }
+
     function getAll(){
       return $http.get('/projects');
     }
@@ -32,6 +36,6 @@
       return $http.post('/project/create', project);
     }
 
-    return {getAll: getAll, getStreams: getStreams, getSegments: getSegments, createStream: createStream, createSegment: createSegment, createReply: createReply, create: create};
+    return {getAll: getAll, getStreams: getStreams, getSegments: getSegments, createStream: createStream, createSegment: createSegment, createReply: createReply, create: create, findOne: findOne};
   }]);
 })();

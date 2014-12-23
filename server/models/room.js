@@ -3,7 +3,8 @@ var mongoose   = require('mongoose'),
     Room       = null;
 
 RoomSchema = new mongoose.Schema({
-  projectId:      {type: Number, required: true, unique: true}
+  projectId:      {type: Number, required: true, unique: true},
+  onlineUsers:    {type: Array}
 });
 
 

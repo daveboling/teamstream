@@ -71,5 +71,7 @@
       $($event.target).find('span, i').toggle();
     };
 
+    socket.emit('joinRoom', {projectId:$scope.projectId});
+
   }]);
 })();

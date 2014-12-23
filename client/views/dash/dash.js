@@ -13,9 +13,7 @@
     });
 
     $scope.createProject = function(){
-      console.log($scope.project);
       Project.create($scope.project).then(function(res){
-        console.log(res.data);
         $scope.projects.push(res.data);
         $scope.project = {};
       });

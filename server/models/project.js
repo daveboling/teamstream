@@ -8,9 +8,7 @@ function Project(){
 
 //create project
 Project.create = function(obj, user, cb){
-  pg.query('insert into projects (project_name, owner_id) values ($1, $2) returning *', [obj.projName, user.id], function(err, results){
-    cb(err, results);
-  });
+  pg.query('insert into projects (project_name, owner_id) values ($1, $2) returning *', [obj.projName, user.id], cb);
 };
 
 //display projects
@@ -24,7 +22,7 @@ Project.all = function(user, cb){
 Project.findOne = function(obj, cb){
   pg.query('select * from projects where projects.id = $1', [obj.pid], function(errProj, project){
     Stream.getAll(obj.pid, function(errStream, streams){
-      cb(project.rows, streams.rows);
+      cb(project.rows, streams.rows, errProj);
     });
   });
 };

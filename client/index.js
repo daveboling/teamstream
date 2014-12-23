@@ -33,7 +33,6 @@
       window.socket.on('online', function(){
         if($rootScope.rootuser && socket.connected){
           //$http.put('/users/' + $rootScope.rootuser._id, {socketId:socket.io.engine.id});
-          $rootScope.online = true;
           $rootScope.$apply();
         }
       });
