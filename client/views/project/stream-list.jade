@@ -32,7 +32,7 @@
                 i.fa.fa-angle-double-down
                 span(style='display: none') hide replies &nbsp;
                 i.fa.fa-angle-double-up(style='display: none')
-              .seg-reply(ng-repeat='r in s.replys')
+              .seg-reply(ng-repeat='r in s.replys | orderBy : "created_on"')
                 .rep-top
                   .col-xs-10
                     .rep-created {{r.created_on | date}}
