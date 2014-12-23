@@ -51,6 +51,7 @@
     $scope.createSegment = function(){
       $scope.segmentForm.streamId = $scope.selectedStream;
       Project.createSegment($scope.segmentForm).then(function(res){
+        socket.emit('updateSegments', $scope.segmentForm.streamId);
         $scope.getSegments($scope.selectedStream);
         $scope.segmentForm = {};
       });
@@ -76,9 +77,19 @@
 
     socket.off('updateStreams');
     socket.on('updateStreams', function(data){
-      console.log('we made it');
       $scope.getStreams();
     });
+
+    socket.off('updateSegments');
+    socket.on('updateSegments', function(streamId){
+      //if user is currently viewing the stream, update only that one
+      if($scope.selectedStream === streamId){
+        $scope.getSegments(streamId);
+      }
+
+    });
+
+
 
   }]);
 })();
