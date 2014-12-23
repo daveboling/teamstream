@@ -21,6 +21,8 @@ psql $1 -f ../db/functions/get_replys.sql
 
 #create data
 psql $1 -f ./data.sql
+mongoimport --jsonArray --drop --db $1 --collection rooms --file rooms.json
+
 
 echo -e "The slate has been cleaned."
 echo -e "Query responsibly."

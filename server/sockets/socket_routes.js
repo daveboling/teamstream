@@ -2,7 +2,7 @@
 
 module.exports = function(socket){
   socket.emit('online');
-  //socket.on('globalChat', require('./globalChat'));
+  socket.on('joinRoom', joinRoom);
 
   // *** SOCKET LOGGING *** //
   console.log('Socket Connected:', socket.id);
@@ -13,3 +13,9 @@ module.exports = function(socket){
 
   console.log('Active Sockets:', this.sockets.length);
 };
+
+//joins a logged in user to a project
+function joinRoom(data){
+  var socket = this;
+  socket.join(data.projectId);
+}
