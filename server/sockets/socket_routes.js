@@ -3,7 +3,7 @@
 module.exports = function(socket){
   socket.emit('online');
   socket.on('joinRoom', joinRoom);
-  socket.on('testAlert', testAlert);
+  socket.on('updateStreams', updateStreams);
 
   // *** SOCKET LOGGING *** //
   console.log('Socket Connected:', socket.id);
@@ -21,7 +21,7 @@ function joinRoom(data){
   socket.join(data.projectId);
 }
 
-function testAlert(data){
+function updateStreams(data){
   var socket = this;
-  socket.broadcast.emit('alertMessage', data.message);
+  socket.broadcast.emit('updateStreams', data);
 }

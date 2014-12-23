@@ -42,6 +42,7 @@
 
     $scope.createStream = function(){
       Project.createStream($scope.streamForm).then(function(res){
+        socket.emit('updateStreams');
         $scope.getStreams(); //needs to be taken out later
         $scope.streamForm.name = '';
       });
@@ -73,11 +74,10 @@
 
     socket.emit('joinRoom', {projectId:$scope.projectId});
 
-    socket.emit('testAlert', {message: 'Someone connected.'});
-
-    socket.off('alertMessage');
-    socket.on('alertMessage', function(message){
-      alert(message);
+    socket.off('updateStreams');
+    socket.on('updateStreams', function(data){
+      console.log('we made it');
+      $scope.getStreams();
     });
 
   }]);
