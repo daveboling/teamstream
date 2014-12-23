@@ -24,6 +24,10 @@
       return $http.post('/project/segment/create', segment);
     }
 
-    return {getAll: getAll, getStreams: getStreams, getSegments: getSegments, createStream: createStream, createSegment: createSegment};
+    function createReply(reply){
+      return $http.post('/project/reply/create', reply);
+    }
+
+    return {getAll: getAll, getStreams: getStreams, getSegments: getSegments, createStream: createStream, createSegment: createSegment, createReply: createReply};
   }]);
 })();

@@ -1,6 +1,5 @@
 .row
   .col-xs-12
-    .streamViewHeader
     .row
       //STREAM LIST
       .col-sm-6.sector-padding
@@ -40,7 +39,14 @@
                   .col-xs-2
                     .rep-creator {{r.creator}}
                 .rep-body {{r.body}}
-              a(href='') reply
+              //REPLY CONTROLS
+              a(href='' ng-hide='reply' ng-click='reply = true') reply
+              a(href='' ng-show='reply' ng-click='reply = false; createReply(s.id);') submit 
+              span &nbsp;
+              a(href='' ng-show='reply' ng-click='reply = false; replyForm.body = ""') cancel
+              .replyForm(ng-show='reply')
+                form(novalidate)
+                  textarea(type='text' ng-model='replyForm.body')
 
 //MODALS
 #create-stream(ng-show='streamModal')

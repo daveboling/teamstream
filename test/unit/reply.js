@@ -31,7 +31,7 @@ describe('Reply', function(){
 
   describe('.create', function(){
     it('should create a new reply', function(done){
-      var payload = {streamId: 2, body: 'Adding tests for the Reply model. Woo!'};
+      var payload = {segId: 1, body: 'Adding tests for the Reply model. Woo!'};
       //Bob is adding a reply to Sue's segment
       Reply.create(payload, {id: 1},function(err, results){
         expect(err).to.be.null;

@@ -6,7 +6,7 @@ function Reply(){
 }
 
 Reply.create = function(obj, user, cb){
-  pg.query('insert into segments (creator, stream_id, body) values ($1, $2, $3);', [user.id, obj.streamId, obj.body], cb);
+  pg.query('insert into replys (creator, segment_id, body) values ($1, $2, $3);', [user.id, obj.segId, obj.body], cb);
 };
 
 Reply.populate = function(segmentId, cb){

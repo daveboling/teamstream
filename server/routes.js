@@ -11,5 +11,6 @@ module.exports = [
   {method: 'get',    path: '/projects/{pid}/streams', config: require('./controllers/projects/get_streams')},
   {method: 'get',    path: '/projects/{sid}/segments', config: require('./controllers/projects/get_segments')},
   {method: 'post',   path: '/project/stream/create', config: require('./controllers/projects/create_stream')},
-  {method: 'post',   path: '/project/segment/create', config: require('./controllers/projects/create_segment')}
+  {method: 'post',   path: '/project/segment/create', config: require('./controllers/projects/create_segment')},
+  {method: 'post',   path: '/project/reply/create', config: require('./controllers/projects/create_reply')}
 ];

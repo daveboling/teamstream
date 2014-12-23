@@ -7,6 +7,7 @@
     $scope.selectedStream = null;
     $scope.streamForm = {projectId: $scope.projectId};
     $scope.segmentForm = {};
+    $scope.replyForm = {};
 
     $scope.getStreams = function(){
       Project.getStreams($scope.projectId).then(function(res){
@@ -40,6 +41,7 @@
     $scope.createStream = function(){
       Project.createStream($scope.streamForm).then(function(res){
         $scope.getStreams(); //needs to be taken out later
+        $scope.streamForm.name = '';
       });
     };
 
@@ -47,6 +49,15 @@
       $scope.segmentForm.streamId = $scope.selectedStream;
       Project.createSegment($scope.segmentForm).then(function(res){
         $scope.getSegments($scope.selectedStream);
+        $scope.segmentForm = {};
+      });
+    };
+
+    $scope.createReply = function(segId){
+      $scope.replyForm.segId = segId;
+      Project.createReply($scope.replyForm).then(function(res){
+        $scope.getSegments($scope.selectedStream);
+        $scope.replyForm = {};
       });
     };
 
