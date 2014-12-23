@@ -28,6 +28,10 @@
       return $http.post('/project/reply/create', reply);
     }
 
-    return {getAll: getAll, getStreams: getStreams, getSegments: getSegments, createStream: createStream, createSegment: createSegment, createReply: createReply};
+    function create(project){
+      return $http.post('/project/create', project);
+    }
+
+    return {getAll: getAll, getStreams: getStreams, getSegments: getSegments, createStream: createStream, createSegment: createSegment, createReply: createReply, create: create};
   }]);
 })();

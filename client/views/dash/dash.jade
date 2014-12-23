@@ -1,4 +1,18 @@
-h2 Your Current Projects
-//pre {{projects | json}}
+.myProjects
+  i.fa.fa-list &nbsp;
+  span My Projects
 
-a(ng-repeat='p in projects' ng-click='viewProject(p.id)'): p {{p.project_name}}
+
+#project-list
+  .project(ng-repeat='p in projects' ng-click='viewProject(p.id)'): p {{p.project_name}}
+  .create-project(ng-click='projectModal = true') Create New Project
+
+
+#create-project(ng-show='projectModal')
+  form(novalidate)
+    .x(ng-click='projectModal = false'): i.fa.fa-times
+    h4 Create Project
+    p Enter a name for this project:
+    input(type='text' ng-model='project.projName')
+    button.create(ng-click=' createProject(); projectModal = false;') Submit
+

@@ -8,7 +8,9 @@ function Project(){
 
 //create project
 Project.create = function(obj, user, cb){
-  pg.query('insert into projects (project_name, owner_id) values ($1, $2)', [obj.projName, user.id], cb);
+  pg.query('insert into projects (project_name, owner_id) values ($1, $2) returning *', [obj.projName, user.id], function(err, results){
+    cb(err, results);
+  });
 };
 
 //display projects
