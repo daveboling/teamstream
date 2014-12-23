@@ -5,6 +5,7 @@ module.exports = function(socket){
   socket.on('joinRoom', joinRoom);
   socket.on('updateStreams', updateStreams);
   socket.on('updateSegments', updateSegments);
+  socket.on('updateReplies', updateReplies);
 
   // *** SOCKET LOGGING *** //
   console.log('Socket Connected:', socket.id);
@@ -30,4 +31,9 @@ function updateStreams(data){
 function updateSegments(streamId){
   var socket = this;
   socket.broadcast.emit('updateSegments', streamId);
+}
+
+function updateReplies(streamId){
+  var socket = this;
+  socket.broadcast.emit('updateReplies', streamId);
 }

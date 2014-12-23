@@ -28,10 +28,10 @@
             //TOGGLE REPLIES
             .seg-messages
               .hide-show(ng-click='showReplys($event)')
-                span show replies &nbsp;
-                i.fa.fa-angle-double-down
-                span(style='display: none') hide replies &nbsp;
-                i.fa.fa-angle-double-up(style='display: none')
+                span(style='display: none') show replies &nbsp;
+                i.fa.fa-angle-double-down(style='display: none')
+                span hide replies &nbsp;
+                i.fa.fa-angle-double-up
               .seg-reply(ng-repeat='r in s.replys | orderBy : "created_on"')
                 .rep-top
                   .col-xs-10

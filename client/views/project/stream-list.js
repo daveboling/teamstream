@@ -60,6 +60,7 @@
     $scope.createReply = function(segId){
       $scope.replyForm.segId = segId;
       Project.createReply($scope.replyForm).then(function(res){
+        socket.emit('updateReplies', $scope.selectedStream);
         $scope.getSegments($scope.selectedStream);
         $scope.replyForm = {};
       });
@@ -82,6 +83,15 @@
 
     socket.off('updateSegments');
     socket.on('updateSegments', function(streamId){
+      //if user is currently viewing the stream, update only that one
+      if($scope.selectedStream === streamId){
+        $scope.getSegments(streamId);
+      }
+
+    });
+
+    socket.off('updateReplies');
+    socket.on('updateReplies', function(streamId){
       //if user is currently viewing the stream, update only that one
       if($scope.selectedStream === streamId){
         $scope.getSegments(streamId);
