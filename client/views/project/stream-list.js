@@ -73,5 +73,12 @@
 
     socket.emit('joinRoom', {projectId:$scope.projectId});
 
+    socket.emit('testAlert', {message: 'Someone connected.'});
+
+    socket.off('alertMessage');
+    socket.on('alertMessage', function(message){
+      alert(message);
+    });
+
   }]);
 })();

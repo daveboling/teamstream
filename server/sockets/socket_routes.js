@@ -3,6 +3,7 @@
 module.exports = function(socket){
   socket.emit('online');
   socket.on('joinRoom', joinRoom);
+  socket.on('testAlert', testAlert);
 
   // *** SOCKET LOGGING *** //
   console.log('Socket Connected:', socket.id);
@@ -18,4 +19,9 @@ module.exports = function(socket){
 function joinRoom(data){
   var socket = this;
   socket.join(data.projectId);
+}
+
+function testAlert(data){
+  var socket = this;
+  socket.broadcast.emit('alertMessage', data.message);
 }
