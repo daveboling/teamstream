@@ -14,7 +14,7 @@
       .col-sm-6.sector-padding
         #stream-view
           a.add(href='' ng-click='segmentModal = true' ng-show='selectedStream') add segment
-          .segment(ng-repeat='s in segments')
+          .segment(ng-repeat='s in segments track by s.id')
             .row.seg-top
               .col-xs-10
                 .seg-created {{s.created_on | date}}
@@ -24,7 +24,7 @@
             .seg-attachments(ng-hide='s.attachments[0] === null')
               hr
               h5 attachments:
-              .attachment(ng-repeat='a in s.attachments'): a(href='{{a}}') {{a}}
+              .attachment(ng-repeat='a in s.attachments track by a'): a(href='{{a}}') {{a}}
             //TOGGLE REPLIES
             .seg-messages
               .hide-show(ng-click='showReplys($event)')
@@ -32,7 +32,7 @@
                 i.fa.fa-angle-double-down(style='display: none')
                 span hide replies &nbsp;
                 i.fa.fa-angle-double-up
-              .seg-reply(ng-repeat='r in s.replys | orderBy : "created_on"')
+              .seg-reply(ng-repeat='r in s.replys track by r.id | orderBy : "created_on"')
                 .rep-top
                   .col-xs-10
                     .rep-created {{r.created_on | date}}

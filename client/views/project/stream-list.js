@@ -16,7 +16,7 @@
         $scope.streamList = res.data;
 
         //get first segment
-        if($scope.streamList.length >= 1){
+        if($scope.streamList.length >= 1 && !$scope.selectedStream){
           $scope.selectedStream = $scope.streamList[0].id;
           $scope.getSegments($scope.streamList[0].id);
         }
