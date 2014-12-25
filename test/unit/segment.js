@@ -48,4 +48,24 @@ describe('Segment', function(){
       });
     });
   });
+
+  describe('.update', function(){
+    it('should update a specific stream', function(done){
+      var payload = {body: 'Updated the segment!', segId: 1};
+      Segment.update(payload, {username: 'bob'}, function(err, results){
+        expect(err).to.be.null;
+        done();
+      });
+    });
+  });
+
+  describe('.delete', function(){
+    it('should delete a segment and all of its replies/attachments', function(done){
+      var params = {segId: 1};
+      Segment.delete(params.segId, function(err){
+        expect(err).to.be.null;
+        done();
+      });
+    });
+  });
 });

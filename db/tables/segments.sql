@@ -4,5 +4,7 @@ create table segments(
   body text not null,
   stream_id integer not null references streams(id),
   sort_order integer null,
-  date_created timestamp not null default now()
+  date_created timestamp not null default now(),
+  edited_by varchar(80) default null,
+  date_edited timestamp default null
 );

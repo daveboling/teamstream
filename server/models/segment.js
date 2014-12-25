@@ -22,6 +22,14 @@ Segment.getAll = function(obj, cb){
   });
 };
 
+Segment.update = function(obj, user, cb){
+  pg.query('update segments set body = $1, edited_by = $2, date_edited = now() where id = $3;', [obj.body, user.username, obj.segId], cb);
+};
+
+Segment.delete = function(segId, cb){
+  pg.query('select delete_segment($1)', [segId], cb);
+};
+
 module.exports = Segment;
 
 function iterator(row, cb){
