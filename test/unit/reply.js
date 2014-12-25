@@ -48,4 +48,26 @@ describe('Reply', function(){
       });
     });
   });
+
+  describe('.update', function(){
+    it('should update a specific reply', function(done){
+      var payload = {body: '', replyId: 2};
+      Reply.update(payload,{username: 'sue'}, function(err){
+        expect(err).to.be.null;
+        done();
+      });
+    });
+  });
+
+  describe('.delete', function(){
+    it('should delete a specific reply', function(done){
+      var params = {replyId: 2};
+      Reply.delete(params.replyId, function(err){
+        expect(err).to.be.null;
+        done();
+      });
+    });
+  });
+
+
 });
