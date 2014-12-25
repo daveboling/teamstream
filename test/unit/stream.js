@@ -51,5 +51,25 @@ describe('Stream', function(){
     });
   });
 
+  describe('.update', function(){
+    it('should update a streams name', function(done){
+      var payload = {name: 'Stream Edited!', streamId: 1};
+      Stream.update(payload, function(err){
+        expect(err).to.be.null;
+        done();
+      });
+    });
+  });
+
+  describe('.delete', function(){
+    it('should delete a specific stream', function(done){
+      var params = {streamId: 2};
+      Stream.update(params, function(err){
+        expect(err).to.be.null;
+        done();
+      });
+    });
+  });
+
 
 });

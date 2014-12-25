@@ -27,7 +27,7 @@ Segment.update = function(obj, user, cb){
 };
 
 Segment.delete = function(segId, cb){
-  pg.query('select delete_segment($1)', [segId], cb);
+  pg.query('delete from segments where id = $1', [segId], cb);
 };
 
 module.exports = Segment;
