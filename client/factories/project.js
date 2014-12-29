@@ -36,6 +36,45 @@
       return $http.post('/project/create', project);
     }
 
-    return {getAll: getAll, getStreams: getStreams, getSegments: getSegments, createStream: createStream, createSegment: createSegment, createReply: createReply, create: create, findOne: findOne};
+    function editSegment(segment){
+      return $http.put('/project/segment/edit', segment);
+    }
+
+    function editStream(stream){
+      return $http.put('/project/stream/edit', stream);
+    }
+
+    function editReply(reply){
+      return $http.put('/project/reply/edit', reply);
+    }
+
+    function deleteSegment(segment){
+      return $http.delete('/project/segment/delete/' + segment);
+    }
+
+    function deleteStream(streamId){
+      return $http.delete('/project/stream/delete/' + streamId);
+    }
+
+    function deleteReply(replyId){
+      return $http.delete('/project/reply/delete/' + replyId);
+    }
+
+    return {
+      getAll: getAll,
+      getStreams: getStreams,
+      getSegments: getSegments,
+      createStream: createStream,
+      createSegment: createSegment,
+      createReply: createReply,
+      create: create,
+      findOne: findOne,
+      editSegment: editSegment,
+      editReply: editReply,
+      editStream: editStream,
+      deleteSegment: deleteSegment,
+      deleteStream: deleteStream,
+      deleteReply: deleteReply
+    };
   }]);
 })();

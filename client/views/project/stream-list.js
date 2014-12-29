@@ -69,7 +69,27 @@
       });
     };
 
-    $scope.getStreams();
+    $scope.editSegment = function(segmentId, body){
+      Project.editSegment({body: body, segmentId: segmentId}).then(function(res){
+        socket.emit('updateSegments', $scope.selectedStream);
+      });
+    };
+
+    $scope.deleteSegment = function(segmentId){
+      Project.deleteSegment(segmentId).then(function(res){
+        socket.emit('updateSegments', $scope.selectedStream);
+        $scope.getSegments($scope.selectedStream);
+      });
+    };
+
+    $scope.deleteStream = function(streamId){
+      Project.deleteStream(streamId).then(function(res){
+        socket.emit('updateStreams');
+        $scope.getStreams();
+      });
+    };
+
+    $scope.getStreams(); //executes immediately upon entering page
 
     //UI RELATED
     $scope.showReplys = function($event){

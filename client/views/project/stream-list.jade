@@ -8,13 +8,12 @@
           .stream-sector(ng-repeat='s in streamList' ng-click='getSegments(s.id)' ng-class='{"current-selected": selectedStream === {{s.id}}, "not-current": selectedStream !== {{s.id}}}') {{s.name}}
             .stream-controls
               a(href='') edit
-              a(href='') delete
-              a(href='') isolate
+              a(href='' ng-click='deleteStream(s.id)') delete
       //STREAM VIEW
       .col-sm-6.sector-padding
         #stream-view
           a.add(href='' ng-click='segmentModal = true' ng-show='selectedStream') add segment
-          //SEGMENTS
+          //SEGMENTS DISPLAY
           .segment(ng-repeat='s in segments track by s.id')
             .row.seg-top
               .col-xs-10
@@ -23,12 +22,16 @@
                 .seg-creator {{s.creator}}
             .seg-edited-by(ng-show='s.edited_by') <em> {{s.edited_by}} on {{s.date_edited}} </em>
             .seg-body(ng-bind-html='s.body')
-            .seg-edit
+            //EDIT SEGMENT
+            a(href='' ng-hide='segEdit' ng-click='segEdit = true') edit
+            span &nbsp;
+            a(href='' ng-click='deleteSegment(s.id)') delete 
+            a(href='' ng-show='segEdit' ng-click='segEdit = false; editSegment(s.id, s.body)') save
+            span &nbsp;
+            a(href='' ng-show='segEdit' ng-click='segEdit = false;') cancel
+            .seg-edit(ng-show='segEdit')
               form
                 textarea(ui-tinymce, ng-model='s.body')
-                a(href='' ng-show='reply' ng-click='reply = false; createReply(s.id);') submit 
-                span &nbsp;
-                a(href='' ng-show='reply' ng-click='reply = false; replyForm.body = ""') cancel
             .seg-attachments(ng-hide='s.attachments[0] === null')
               hr
               h5 attachments:

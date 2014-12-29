@@ -23,7 +23,7 @@ Segment.getAll = function(obj, cb){
 };
 
 Segment.update = function(obj, user, cb){
-  pg.query('update segments set body = $1, edited_by = $2, date_edited = now() where id = $3;', [obj.body, user.username, obj.segId], cb);
+  pg.query('update segments set body = $1, edited_by = $2, date_edited = now() where id = $3;', [obj.body, user.username, obj.segmentId], cb);
 };
 
 Segment.delete = function(segId, cb){
