@@ -11,6 +11,9 @@
     $scope.replyForm = {};
     $scope.segments = [];
 
+    //edit controls
+    $scope.segEditForm = {};
+
     $scope.getStreams = function(){
       Project.getStreams($scope.projectId).then(function(res){
         $scope.streamList = res.data;
@@ -100,6 +103,7 @@
     });
 
 
-
   }]);
 })();
+
+

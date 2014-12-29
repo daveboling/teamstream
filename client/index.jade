@@ -13,6 +13,7 @@ html(ng-app='teamstream', lang='en')
     link(rel='stylesheet', href='views/home/home.css')
     link(rel='stylesheet', href='views/dash/dash.css')
     link(rel='stylesheet', href='views/project/project.css')
+    link(rel='stylesheet', href='/vendor/jqueryte/dist/jquery-te-1.4.0.css')
   body
     .container
       .row
@@ -26,8 +27,11 @@ html(ng-app='teamstream', lang='en')
     script(src='/vendor/angular/angular.js')
     script(src='/vendor/angular-ui-router/release/angular-ui-router.js')
     script(src='/vendor/ng-file-upload/angular-file-upload-all.min.js')
+    script(src='/custom/directives/textangular-sanitize.min.js')
     script(src='/vendor/underscore/underscore.js')
     script(src='/socket.io/socket.io.js')
+    script(src='/vendor/tinymce/tinymce.min.js')
+    script(src='/vendor/angular-ui-tinymce/src/tinymce.js')
 
 
     script(src='/index.js')

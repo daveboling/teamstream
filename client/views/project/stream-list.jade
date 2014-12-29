@@ -14,13 +14,21 @@
       .col-sm-6.sector-padding
         #stream-view
           a.add(href='' ng-click='segmentModal = true' ng-show='selectedStream') add segment
+          //SEGMENTS
           .segment(ng-repeat='s in segments track by s.id')
             .row.seg-top
               .col-xs-10
                 .seg-created {{s.created_on | date}}
               .col-xs-2
                 .seg-creator {{s.creator}}
-            .seg-body {{s.body}}
+            .seg-edited-by(ng-show='s.edited_by') <em> {{s.edited_by}} on {{s.date_edited}} </em>
+            .seg-body(ng-bind-html='s.body')
+            .seg-edit
+              form
+                textarea(ui-tinymce, ng-model='s.body')
+                a(href='' ng-show='reply' ng-click='reply = false; createReply(s.id);') submit 
+                span &nbsp;
+                a(href='' ng-show='reply' ng-click='reply = false; replyForm.body = ""') cancel
             .seg-attachments(ng-hide='s.attachments[0] === null')
               hr
               h5 attachments:
@@ -64,5 +72,6 @@
     p Enter a body for this segment:
     textarea(type='text' ng-model='segmentForm.body')
     button.create(ng-click='segmentModal = false; createSegment();') Submit
+
 
 
