@@ -23,8 +23,8 @@
         $('#toggle').animate({right: '-5px'});
       }
       else{
-        $('#side-bar').animate({right: '2px'});
-        $('#toggle').animate({right: '295px'});
+        $('#side-bar').animate({right: '0px'});
+        $('#toggle').animate({right: '290px'});
       }
       //toggle
       $scope.barIsVisible = !$scope.barIsVisible;
