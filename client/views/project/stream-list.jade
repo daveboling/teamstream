@@ -49,7 +49,7 @@
                 i.fa.fa-angle-double-down(style='display: none')
                 span hide replies &nbsp;
                 i.fa.fa-angle-double-up
-              .seg-reply(ng-repeat='r in s.replys track by r.id | orderBy : "created_on"')
+              .seg-reply(ng-repeat='r in s.replys track by r.id')
                 .rep-top
                   .col-xs-10
                     .rep-created {{r.created_on | date}}

@@ -1,0 +1,24 @@
+#toggle(ng-click='toggleSidebar();')
+  i.fa.fa-angle-right(ng-show='barIsVisible')
+  i.fa.fa-angle-left(ng-hide='barIsVisible')
+#side-bar
+  label Online Users
+  .online-users
+    .box
+      .online-circle
+    .box
+      .online-circle
+    .box
+      .offline-circle
+    .box
+      .offline-circle
+  .add-collaborator
+    form
+      label Add Collaborator
+      input(type='text')
+      
+  label Activity Monitor
+  .activity-monitor
+    .activity(ng-repeat='a in activity') {{a}}
+
+  

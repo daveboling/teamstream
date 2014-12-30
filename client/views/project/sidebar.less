@@ -1,0 +1,105 @@
+
+#side-bar {
+  height: 100%;
+  position: fixed;
+  right: 2px;
+  top: 50px;
+  z-index: 998;
+  border-radius: 10px;
+  border: 1px solid black;
+  padding: 10px;
+  min-width: 275px;
+  overflow: auto;
+  background-color: white;
+  
+  label {
+    color: rgba(0, 0, 0, 0.6);
+    font-size: 13px;
+  }
+  
+}
+
+#toggle {
+  height: 32px;
+  width: 30px;
+  border: 1px solid black;
+  position: fixed;
+  top: 60px;
+  right: 290px;
+  background-color: white;
+  text-align: center;
+  border-radius: 3px;
+  z-index: 998;
+  
+  i {
+    text-align: center;
+    font-size: 30px;
+  }
+      
+  &:hover {
+      background-color: rgba(0, 0, 0, 0.8);
+      color: white;
+      cursor: pointer;
+  }
+}
+
+.online-users {
+  margin-bottom: 20px;
+}
+
+.box {
+  height: 30px;
+  width: 30px;
+  border:1px solid black;
+  border-radius: 5px;
+  display: inline-block;
+  position: relative;
+  background-image: url('http://community.kaseya.com/utility/anonymous.gif');
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.online-circle, .offline-circle {
+  height: 5px;
+  width: 5px;
+  border-radius: 100%;
+  border:1px solid rgba(0, 0, 0, 0.6);
+  position: absolute;
+  top: 2px;
+  left: 2px;
+}
+
+.online-circle {
+  background-color: green;
+}
+
+.offline-circle {
+  background-color: red;
+}
+
+.add-collaborator {
+  color: rgba(0, 0, 0, 0.6);
+  margin-bottom: 20px;
+  font-size: 13px;
+  
+  form input {
+    height: 20px;
+    width: 98%;
+    display: block;
+  }
+}
+
+.activity-monitor {
+  background-color: rgb(227, 227, 277);
+  border-radius: 3px;
+  padding: 5px;
+
+  .activity {
+    border: 1px solid rgb(227, 227, 227);
+    padding: 3px;
+    margin: 0px auto;
+    font-size: 13px;
+    background-color: white;
+    border-radius: 3px;
+  }
+}
