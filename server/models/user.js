@@ -28,5 +28,9 @@ User.login = function(obj, cb){
   });
 };
 
+User.findOne = function(email, cb){
+  pg.query('select users.id, users.username from users where email = $1', [email], cb);
+};
+
 
 module.exports = User;

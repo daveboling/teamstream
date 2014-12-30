@@ -16,6 +16,14 @@
       $scope.project = res.data;
     });
 
+    $scope.addCollaborator = function(email){
+      Project.addCollaborator({email: email, projectId: $scope.projectId}).then(function(res){
+        alert('User has been added to the project');
+      }, function(res){
+        alert('Sorry, no user found at that e-mail');
+      });
+    };
+
     //sidebar toggle
     $scope.toggleSidebar = function(){
       if($scope.barIsVisible){

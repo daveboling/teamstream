@@ -15,7 +15,8 @@
   .add-collaborator
     form
       label Add Collaborator
-      input(type='text')
+      input(type='text' ng-model='email')
+      button(style='display: none', ng-click='addCollaborator(email)') submit 
       
   label Activity Monitor
   .activity-monitor

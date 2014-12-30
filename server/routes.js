@@ -11,6 +11,7 @@ module.exports = [
   {method: 'get',    path: '/projects/{pid}/streams',           config: require('./controllers/projects/get_streams')},
   {method: 'get',    path: '/projects/{sid}/segments',          config: require('./controllers/projects/get_segments')},
   {method: 'post',   path: '/project/create',                   config: require('./controllers/projects/create_project')},
+  {method: 'post',   path: '/project/collaborator/add',         config: require('./controllers/projects/add_collaborator')},
   {method: 'post',   path: '/project/stream/create',            config: require('./controllers/projects/create_stream')},
   {method: 'put',    path: '/project/stream/edit',              config: require('./controllers/projects/edit_stream')},
   {method: 'delete', path: '/project/stream/delete/{streamId}', config: require('./controllers/projects/delete_stream')},

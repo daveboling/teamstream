@@ -8,6 +8,10 @@
       return $http.get('/project/'+projectId);
     }
 
+    function addCollaborator(obj){
+      return $http.post('/project/collaborator/add', obj);
+    }
+
     function getAll(){
       return $http.get('/projects');
     }
@@ -74,7 +78,8 @@
       editStream: editStream,
       deleteSegment: deleteSegment,
       deleteStream: deleteStream,
-      deleteReply: deleteReply
+      deleteReply: deleteReply,
+      addCollaborator: addCollaborator
     };
   }]);
 })();
