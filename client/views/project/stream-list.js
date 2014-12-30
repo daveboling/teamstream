@@ -73,6 +73,13 @@
       });
     };
 
+    $scope.editReply = function(replyId, body){
+      Project.editReply({body: body, replyId: replyId}).then(function(res){
+        socket.emit('updateReplies', $scope.selectedStream);
+        $scope.getSegments($scope.selectedStream);
+      });
+    };
+
     $scope.deleteSegment = function(segmentId){
       Project.deleteSegment(segmentId).then(function(res){
         socket.emit('updateSegments', $scope.selectedStream);
@@ -84,6 +91,13 @@
       Project.deleteStream(streamId).then(function(res){
         socket.emit('updateStreams');
         $scope.getStreams();
+      });
+    };
+
+    $scope.deleteReply = function(replyId){
+      Project.deleteReply(replyId).then(function(res){
+        socket.emit('updateReplies', $scope.selectedStream);
+        $scope.getSegments($scope.selectedStream);
       });
     };
 

@@ -51,7 +51,7 @@
 
   .seg-body {
     width: 100%;
-
+    word-wrap: break-word;
   }
 
   .seg-edit {
@@ -77,6 +77,29 @@
       width: 80%;
       margin:0 auto;
       padding: 5px;
+
+
+      .rep-edit-controls a {
+        font-size: 14px;
+
+        &:hover {
+          color: black;
+        }
+      }
+
+      .rep-body {
+        width: 100%;
+        word-wrap: break-word;
+      }
+
+      .rep-edit {
+        form textarea {
+          width: 100%;
+          height: 100%;
+          overflow: auto;
+          resize: none;
+        }
+      }
     }
 
     .hide-show {

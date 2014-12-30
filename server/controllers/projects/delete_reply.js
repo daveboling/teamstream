@@ -7,13 +7,13 @@ module.exports = {
   description: 'Delete a reply',
   tags:['projects', 'replies'],
   validate: {
-    payload: {
+    params: {
       replyId: Joi.number().required()
     }
   },
   auth: {mode: 'required'},
   handler: function(request, reply){
-    Reply.delete(request.payload.replyId, function(err){
+    Reply.delete(request.params.replyId, function(err){
       reply().code(err ? 400 : 200);
     });
   }
