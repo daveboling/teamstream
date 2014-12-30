@@ -7,8 +7,13 @@
           a.add(href='' ng-click='streamModal = true')  add stream
           .stream-sector(ng-repeat='s in streamList' ng-click='getSegments(s.id)' ng-class='{"current-selected": selectedStream === {{s.id}}, "not-current": selectedStream !== {{s.id}}}') {{s.name}}
             .stream-controls
-              a(href='') edit
-              a(href='' ng-click='deleteStream(s.id)') delete
+              a(href='' ng-hide='streamEdit' ng-click='streamEdit = true') edit
+              a(href='' ng-show='streamEdit' ng-click='streamEdit = false; editStream(s.id, s.name)') save
+              a(href='' ng-hide='streamEdit' ng-click='deleteStream(s.id)') delete
+            .stream-edit(ng-show='streamEdit')
+              form
+                input(type='text' ng-model='s.name')
+
       //STREAM VIEW
       .col-sm-6.sector-padding
         #stream-view
@@ -23,12 +28,13 @@
             .seg-body(ng-bind-html='s.body')
             .seg-edited-by(ng-show='s.edited_by') <em style='font-size: 12px;'> Last edit by: {{s.edited_by}} on {{s.date_edited | date}} </em>
             //EDIT SEGMENT
-            a(href='' ng-hide='segEdit' ng-click='segEdit = true') edit
-            span &nbsp;
-            a(href='' ng-hide='segEdit' ng-click='deleteSegment(s.id)') delete 
-            a(href='' ng-show='segEdit' ng-click='segEdit = false; editSegment(s.id, s.body)') save
-            span &nbsp;
-            a(href='' ng-show='segEdit' ng-click='segEdit = false;') cancel
+            .seg-edit-controls(ng-show='rootuser.username === s.creator')
+              a(href='' ng-hide='segEdit' ng-click='segEdit = true') edit
+              span &nbsp;
+              a(href='' ng-hide='segEdit' ng-click='deleteSegment(s.id)') delete 
+              a(href='' ng-show='segEdit' ng-click='segEdit = false; editSegment(s.id, s.body)') save
+              span &nbsp;
+              a(href='' ng-show='segEdit' ng-click='segEdit = false;') cancel
             .seg-edit(ng-show='segEdit')
               form
                 textarea(ui-tinymce, ng-model='s.body')

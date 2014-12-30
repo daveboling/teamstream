@@ -12,6 +12,7 @@ module.exports = [
   {method: 'get',    path: '/projects/{sid}/segments',          config: require('./controllers/projects/get_segments')},
   {method: 'post',   path: '/project/create',                   config: require('./controllers/projects/create_project')},
   {method: 'post',   path: '/project/stream/create',            config: require('./controllers/projects/create_stream')},
+  {method: 'put',    path: '/project/stream/edit',              config: require('./controllers/projects/edit_stream')},
   {method: 'delete', path: '/project/stream/delete/{streamId}', config: require('./controllers/projects/delete_stream')},
   {method: 'post',   path: '/project/segment/create',           config: require('./controllers/projects/create_segment')},
   {method: 'put',    path: '/project/segment/edit',             config: require('./controllers/projects/edit_segment')},

@@ -80,6 +80,13 @@
       });
     };
 
+    $scope.editStream = function(streamId, name){
+      Project.editStream({streamId: streamId, name: name}).then(function(res){
+        socket.emit('updateStreams');
+        $scope.getStreams();
+      });
+    };
+
     $scope.deleteSegment = function(segmentId){
       Project.deleteSegment(segmentId).then(function(res){
         socket.emit('updateSegments', $scope.selectedStream);
