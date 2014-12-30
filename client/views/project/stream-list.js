@@ -11,9 +11,6 @@
     $scope.replyForm = {};
     $scope.segments = [];
 
-    //edit controls
-    $scope.segEditForm = {};
-
     $scope.getStreams = function(){
       Project.getStreams($scope.projectId).then(function(res){
         $scope.streamList = res.data;
@@ -72,6 +69,7 @@
     $scope.editSegment = function(segmentId, body){
       Project.editSegment({body: body, segmentId: segmentId}).then(function(res){
         socket.emit('updateSegments', $scope.selectedStream);
+        $scope.getSegments($scope.selectedStream);
       });
     };
 

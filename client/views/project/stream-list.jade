@@ -20,8 +20,8 @@
                 .seg-created {{s.created_on | date}}
               .col-xs-2
                 .seg-creator {{s.creator}}
-            .seg-edited-by(ng-show='s.edited_by') <em> {{s.edited_by}} on {{s.date_edited}} </em>
             .seg-body(ng-bind-html='s.body')
+            .seg-edited-by(ng-show='s.edited_by') <em style='font-size: 12px;'> Last edit by: {{s.edited_by}} on {{s.date_edited | date}} </em>
             //EDIT SEGMENT
             a(href='' ng-hide='segEdit' ng-click='segEdit = true') edit
             span &nbsp;
