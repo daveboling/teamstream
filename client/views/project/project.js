@@ -2,10 +2,11 @@
   'use strict';
   var project = angular.module('teamstream');
 
-  project.controller('ProjectCtrl', ['$scope', '$stateParams', 'Project', function($scope, $stateParams, Project){
+  project.controller('ProjectCtrl', ['$scope', '$stateParams', '$rootScope', 'Project', 'Room', function($scope, $stateParams, $rootScope, Project, Room){
     $scope.projectId = $stateParams.pid;
     $scope.project = {};
     $scope.barIsVisible = true;
+    $scope.onlineUsers = [];
     $scope.activity = [
       'Dave hit the jackpot',
       'Joe made a new note.',
@@ -37,6 +38,24 @@
       //toggle
       $scope.barIsVisible = !$scope.barIsVisible;
     };
+
+    //get online users
+    Room.getOnlineUsers($scope.projectId).then(function(res){
+      $scope.onlineUsers = res.data;
+    });
+
+    //remove online status for a user
+    window.onbeforeunload = function(e){
+        e = e || window.event; //Did an event happen?
+
+        if(e){
+          //Don't need to do anything with returned promise
+          Room.goOffline($scope.projectId, $rootScope.rootuser.email);
+        }
+    };
+
+    //socket event to reflect when a user goes offline
+
 
   }]);
 })();
