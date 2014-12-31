@@ -4,12 +4,11 @@
 #side-bar
   label Online Users
   .online-users
+    .user-online(ng-repeat='user in onlineUsers') {{user}}
     .box
       .online-circle
     .box
       .online-circle
-    .box
-      .offline-circle
     .box
       .offline-circle
   .add-collaborator

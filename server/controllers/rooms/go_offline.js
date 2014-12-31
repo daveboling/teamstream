@@ -21,8 +21,11 @@ module.exports = {
     Room.findOne({projectId: request.params.projectId}, function(err, room){
       //find index of email
       var index = _.indexOf(room.onlineUsers, request.payload.email);
-      if(index){
+      console.log(index);
+      if(index >= 0){
+        console.log('fired');
         room.onlineUsers.splice(index, 1);
+        console.log(room.onlineUsers);
         room.save();
       }
 
