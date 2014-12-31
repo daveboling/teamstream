@@ -19,7 +19,7 @@
         #stream-view
           a.add(href='' ng-click='segmentModal = true' ng-show='selectedStream') add segment
           //SEGMENTS DISPLAY
-          .segment(ng-repeat='s in segments track by s.id')
+          .segment(ng-repeat='s in segments track by s.id' ng-file-drop drag-over-class="{accept:'dragover', reject:'dragover-err', delay:100}")
             .row.seg-top
               .col-xs-10
                 .seg-created {{s.created_on | date}}
