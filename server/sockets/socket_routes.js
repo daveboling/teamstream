@@ -6,6 +6,7 @@ module.exports = function(socket){
   socket.on('updateStreams', updateStreams);
   socket.on('updateSegments', updateSegments);
   socket.on('updateReplies', updateReplies);
+  socket.on('userStatusChange', updateStatus);
 
   // *** SOCKET LOGGING *** //
   console.log('Socket Connected:', socket.id);
@@ -36,4 +37,9 @@ function updateSegments(streamId){
 function updateReplies(streamId){
   var socket = this;
   socket.broadcast.emit('updateReplies', streamId);
+}
+
+function updateStatus(){
+  var socket = this;
+  socket.broadcast.emit('statusChange');
 }

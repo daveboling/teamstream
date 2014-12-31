@@ -13,9 +13,13 @@
       'Epsilon meowed because she wanted out.'
     ];
 
+    //initial function calls
     Project.findOne($scope.projectId).then(function(res){
       $scope.project = res.data;
     });
+
+    socket.emit('userStatusChange');
+
 
     $scope.addCollaborator = function(email){
       Project.addCollaborator({email: email, projectId: $scope.projectId}).then(function(res){
@@ -40,9 +44,13 @@
     };
 
     //get online users
-    Room.getOnlineUsers($scope.projectId).then(function(res){
-      $scope.onlineUsers = res.data;
-    });
+    $scope.getOnlineUsers = function(){
+      Room.getOnlineUsers($scope.projectId).then(function(res){
+        $scope.onlineUsers = res.data;
+      });
+    };
+
+    $scope.getOnlineUsers();
 
     //remove online status for a user
     window.onbeforeunload = function(e){
@@ -51,10 +59,16 @@
         if(e){
           //Don't need to do anything with returned promise
           Room.goOffline($scope.projectId, $rootScope.rootuser.email);
+          socket.emit('userStatusChange');
         }
     };
 
     //socket event to reflect when a user goes offline
+    socket.off('statusChange');
+    socket.on('statusChange', function(){
+      $scope.getOnlineUsers();
+    });
+
 
 
   }]);

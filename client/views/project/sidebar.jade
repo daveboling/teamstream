@@ -4,7 +4,7 @@
 #side-bar
   label Online Users
   .online-users(ng-show='onlineUsers.length >= 1')
-    .box(ng-repeat='user in onlineUsers')
+    .box(ng-repeat='user in onlineUsers track by user')
       img(gravatar-src="user" gravatar-size="100")
       .online-circle
   .add-collaborator
