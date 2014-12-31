@@ -3,14 +3,10 @@
   i.fa.fa-angle-left(ng-hide='barIsVisible')
 #side-bar
   label Online Users
-  .online-users
-    .user-online(ng-repeat='user in onlineUsers') {{user}}
-    .box
+  .online-users(ng-show='onlineUsers.length >= 1')
+    .box(ng-repeat='user in onlineUsers')
+      img(gravatar-src="user" gravatar-size="100")
       .online-circle
-    .box
-      .online-circle
-    .box
-      .offline-circle
   .add-collaborator
     form
       label Add Collaborator

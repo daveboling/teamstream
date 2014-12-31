@@ -1,7 +1,7 @@
 (function(){
   'use strict';
 
-  angular.module('teamstream', ['ui.router', 'ui.tinymce', 'ngSanitize', 'angularFileUpload'])
+  angular.module('teamstream', ['ui.router', 'ui.tinymce', 'ngSanitize', 'angularFileUpload', 'ui.gravatar'])
     .config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $urlRouterProvider){
       $urlRouterProvider.otherwise('/');
 
