@@ -108,6 +108,13 @@
       });
     };
 
+    $scope.upload = function(segId, file){
+      Project.addAttachment(segId, file).then(function(res){
+        socket.emit('updateSegments', $scope.selectedStream);
+        $scope.getSegments($scope.selectedStream);
+      });
+    };
+
     $scope.getStreams(); //executes immediately upon entering page
 
     //UI RELATED

@@ -19,7 +19,7 @@
         #stream-view
           a.add(href='' ng-click='segmentModal = true' ng-show='selectedStream') add segment
           //SEGMENTS DISPLAY
-          .segment(ng-repeat='s in segments track by s.id' ng-file-drop drag-over-class="{accept:'dragover', reject:'dragover-err', delay:100}")
+          .segment.drop-box(ng-repeat='s in segments track by s.id' ng-file-drop ng-model='file' ng-file-change="upload(s.id, file)" drag-over-class="{accept:'dragover', reject:'dragover-err', delay:100}" accept="image/*,*pdf")
             .row.seg-top
               .col-xs-10
                 .seg-created {{s.created_on | date}}

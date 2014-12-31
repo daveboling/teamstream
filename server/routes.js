@@ -21,5 +21,6 @@ module.exports = [
   {method: 'post',   path: '/project/reply/create',             config: require('./controllers/projects/create_reply')},
   {method: 'put',    path: '/project/reply/edit',               config: require('./controllers/projects/edit_reply')},
   {method: 'delete', path: '/project/reply/delete/{replyId}',   config: require('./controllers/projects/delete_reply')},
+  {method: 'post',   path: '/project/attachment/add/{segId}',   config: require('./controllers/projects/add_attachment')},
   {method: 'put',    path: '/socket/offline',                   config: require('./controllers/rooms/go_offline')}
 ];

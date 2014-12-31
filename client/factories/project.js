@@ -3,7 +3,7 @@
 
   var projFactory = angular.module('teamstream');
 
-  projFactory.factory('Project', ['$http', function($http){
+  projFactory.factory('Project', ['$http', '$upload', function($http, $upload){
     function findOne(projectId){
       return $http.get('/project/'+projectId);
     }
@@ -64,6 +64,14 @@
       return $http.delete('/project/reply/delete/' + replyId);
     }
 
+    function addAttachment(segId, file){
+      return $upload.upload({
+            url: '/project/attachment/add/'+segId,
+            method: 'POST',
+            file: file
+      });
+    }
+
     return {
       getAll: getAll,
       getStreams: getStreams,
@@ -79,7 +87,8 @@
       deleteSegment: deleteSegment,
       deleteStream: deleteStream,
       deleteReply: deleteReply,
-      addCollaborator: addCollaborator
+      addCollaborator: addCollaborator,
+      addAttachment: addAttachment
     };
   }]);
 })();
