@@ -40,6 +40,9 @@ function updateReplies(streamId){
 }
 
 function updateStatus(){
-  var socket = this;
-  socket.broadcast.emit('statusChange');
+  var socket = this,
+  timer = setTimeout(function(){   //give this a little padding for go_offline controller to finish
+    socket.broadcast.emit('statusChange');
+    clearTimeout(timer);
+  },1000);
 }
