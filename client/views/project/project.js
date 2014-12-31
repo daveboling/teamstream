@@ -19,8 +19,9 @@
     });
 
     socket.emit('userStatusChange');
+    //end intial function calls
 
-
+    //add collaborator to a project
     $scope.addCollaborator = function(email){
       Project.addCollaborator({email: email, projectId: $scope.projectId}).then(function(res){
         alert('User has been added to the project');
@@ -52,16 +53,31 @@
 
     $scope.getOnlineUsers();
 
-    //remove online status for a user
+    //go offline if user closes window
     window.onbeforeunload = function(e){
         e = e || window.event; //Did an event happen?
-
         if(e){
           //Don't need to do anything with returned promise
           Room.goOffline($scope.projectId, $rootScope.rootuser.email);
           socket.emit('userStatusChange');
         }
     };
+
+    //go offline if user has logged out on this page
+    window.addEventListener('logout', function(){
+      Room.goOffline($scope.projectId, $rootScope.rootuser.email);
+      socket.emit('userStatusChange');
+    });
+
+    //go offline if user changes the state
+    $rootScope.$on('$stateChangeStart', function(event, toState, toParams, fromState, fromParams){
+      //state changes when logging out, don't run this if logging out
+      if($rootScope.rootuser){
+        Room.goOffline($scope.projectId, $rootScope.rootuser.email);
+        socket.emit('userStatusChange');
+      }
+    });
+
 
     //socket event to reflect when a user goes offline
     socket.off('statusChange');
