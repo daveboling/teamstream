@@ -1,8 +1,8 @@
 .row
   .col-xs-12
-    .row
+    .row.sector-padding
       //STREAM LIST
-      .col-sm-6.sector-padding
+      .col-xs-12.sector-padding
         #stream-list
           a.add(href='' ng-click='streamModal = true')  add stream
           .stream-sector(ng-repeat='s in streamList' ng-click='getSegments(s.id)' ng-class='{"current-selected": selectedStream === {{s.id}}, "not-current": selectedStream !== {{s.id}}}') {{s.name}}
@@ -15,16 +15,18 @@
                 input(type='text' ng-model='s.name')
 
       //STREAM VIEW
-      .col-sm-6.sector-padding
+    .row.sector-padding
+      .col-xs-12.sector-padding
         #stream-view
           a.add(href='' ng-click='segmentModal = true' ng-show='selectedStream') add segment
           //SEGMENTS DISPLAY
           .segment.drop-box(ng-repeat='s in segments track by s.id' ng-file-drop ng-model='file' ng-file-change="upload(s.id, file)" drag-over-class="{accept:'dragover', reject:'dragover-err', delay:100}" accept="image/*,*pdf")
             .row.seg-top
-              .col-xs-10
-                .seg-created {{s.created_on | date}}
-              .col-xs-2
+              .col-xs-6
                 .seg-creator {{s.creator}}
+                img.seg-avatar(gravatar-src="s.email" gravatar-size="75")
+              .col-xs-6
+                .seg-created {{s.created_on | date:'MM/dd/yyyy @ h:mma'}}
             .seg-body(ng-bind-html='s.body')
             .seg-edited-by(ng-show='s.edited_by') <em style='font-size: 12px;'> Last edit by: {{s.edited_by}} on {{s.date_edited | date}} </em>
             //EDIT SEGMENT

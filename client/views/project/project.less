@@ -59,8 +59,14 @@
 .segment {
   padding: 5px;
   margin-bottom: 5px;
+  margin-right: 10px;
+  margin-top: 25px;
   border: 1px solid black;
   background-color: white;
+  display: inline-block;
+  width: 500px;
+
+  vertical-align: top;
 
   .seg-top {
     border-bottom: 1px solid black; 
@@ -117,6 +123,10 @@
           resize: none;
         }
       }
+
+      .rep-top {
+        height: 30px;
+      }
     }
 
     .hide-show {
@@ -152,7 +162,18 @@
 #stream-view {
   background-color: rgb(227,227,227);
   border-radius: 10px;
+  margin-top: 10px;
+  height: 100%;
   padding: 8px;
+  overflow-x: scroll;
+  white-space: nowrap;
+  position: relative;
+
+  a.add{
+    position: absolute;
+    top: 5px;
+    left: 10px;
+  }
 }
 
 
@@ -241,4 +262,10 @@ div[ui-view='list'], div[ui-view='view']{
 
 .dragover-err {
   background-color: rgba(200, 0, 0, 0.3);
+}
+
+// TAG AVATAR
+.seg-avatar {
+  border: 1px solid rgb(227, 227, 227);
+  border-radius: 5px;
 }
