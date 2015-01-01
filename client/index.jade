@@ -17,10 +17,12 @@ html(ng-app='teamstream', lang='en')
     link(rel='stylesheet', href='/vendor/jqueryte/dist/jquery-te-1.4.0.css')
   body
     .container-fluid
-      .row
-        .col-xs-12
-          include views/nav/nav
+      //-OLD LAYOUT
+      //- .row
+      //-   .col-xs-12
+      //-     include views/nav/nav
       .row.full-height
+        include views/nav/nav
         .col-xs-12
           div(ui-view)
 
