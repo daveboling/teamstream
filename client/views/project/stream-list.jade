@@ -56,7 +56,7 @@
                 .row.rep-top
                     .col-xs-6
                       .rep-creator {{r.creator}}
-                      img.rep-avatar(gravatar-src="r.email" gravatar-size="25")
+                      img.rep-avatar(gravatar-src="r.email" gravatar-size="30")
                     .col-xs-6(style='text-align: right;')
                       .rep-created {{r.created_on | date:'MM/dd/yyyy @ h:mma'}}
                       .rep-edit-controls(ng-show='rootuser.username === r.creator')
