@@ -14,7 +14,7 @@ html(ng-app='teamstream', lang='en')
     link(rel='stylesheet', href='views/dash/dash.css')
     link(rel='stylesheet', href='views/project/project.css')
     link(rel='stylesheet', href='views/project/sidebar.css')
-    link(rel='stylesheet', href='/vendor/jqueryte/dist/jquery-te-1.4.0.css')
+    script(src='custom/gumby/js/modernizr-2.6.2.min.js')
   body
     .container-fluid
       //-OLD LAYOUT
@@ -38,6 +38,9 @@ html(ng-app='teamstream', lang='en')
     script(src='/vendor/ng-file-upload/angular-file-upload-all.min.js')
     script(src="/vendor/angular-gravatar/build/md5.js")
     script(src="/vendor/angular-gravatar/build/angular-gravatar.js")
+    script(src='custom/gumby/js/gumby.min.js')
+    script(src='custom/gumby/js/gumby.navbar.js')
+    script(src='custom/gumby/js/gumby.init.js')
 
 
 
