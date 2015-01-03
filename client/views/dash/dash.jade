@@ -1,10 +1,10 @@
 .myProjects
   i.fa.fa-list &nbsp;
-  span My Projects
+  span Projects
 
 
 #project-list
-  .project(ng-repeat='p in projects' ng-click='viewProject(p.id)'): p {{p.project_name}}
+  .project.fadeIn(ng-repeat='p in projects' ng-click='viewProject(p.id)'): p {{p.project_name}}
   .create-project(ng-click='projectModal = true') Create New Project
 
 

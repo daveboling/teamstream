@@ -1,8 +1,30 @@
-.row
-  .col-xs-12
-    #top.row
-      .col-sm-4
-      .col-sm-4
-        h2 teamstream
-        h3 Collaboration simplified.
-      .col-sm-4
+.row.full-height
+  .col-xs-12.full-height
+    .row.full-height
+      .col-xs-12
+        #top
+          .short-logo
+          .top-header collaboration simplified
+          .landing
+            p(ng-hide='rootuser.username') It's free. Give it a go!
+            .btn.secondary.large.metro(ng-hide='rootuser.username'): a(ui-sref='dashboard') Sign Up
+            p(ng-show='rootuser.username') You've already signed up!
+            .btn.secondary.large.metro(ng-show='rootuser.username' ui-sref='dashboard'): a(ui-sref='register') Go to Dashboard
+        #statement
+          .content
+            .content-body
+              p By utilizing WebSockets, teamstream is a simplified stream and segment system that allows you and your team to collaborate in real time.
+               | From large scale to small scale, create as many stream or segments as needed. Once done, archive them to be viewed as a history or edit them
+               | as much as you like.  
+
+              h5 teamstream project
+
+            .sample-project
+  
+            .content-body
+              p Add as many people as you like or not. It's up to you. 
+
+        #tutorial
+
+
+
