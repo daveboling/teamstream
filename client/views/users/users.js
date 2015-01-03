@@ -5,6 +5,7 @@
     .controller('UsersCtrl', ['$rootScope', '$scope', '$state', 'User', function($rootScope, $scope, $state, User){
       $scope.user = {};
       $scope.mode = $state.current.name;
+      $scope.pageHeader = $scope.mode === 'login' ? 'Login to teamstream' : 'Register on teamstream';
 
       $scope.submit = function(){
         if($scope.mode === 'register'){
