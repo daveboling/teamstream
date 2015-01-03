@@ -149,6 +149,15 @@
     });
 
 
+    //tinymce options
+    $scope.tinymceOptions = {
+        resize: false,
+        width: '100%',
+        height: 350
+    };
+
+
+
   }]);
 })();
 
