@@ -1,3 +1,4 @@
+/* jshint camelcase:false */
 (function(){
   'use strict';
   var project = angular.module('teamstream');
@@ -15,7 +16,7 @@
 
     //initial function calls
     Project.findOne($scope.projectId).then(function(res){
-      $scope.project = res.data;
+      $scope.project = res.data[0];
     });
 
     socket.emit('userStatusChange');
@@ -24,9 +25,9 @@
     //add collaborator to a project
     $scope.addCollaborator = function(email){
       Project.addCollaborator({email: email, projectId: $scope.projectId}).then(function(res){
-        alert('User has been added to the project');
+        alertify.log('Added user to: ' + $scope.project.project_name);
       }, function(res){
-        alert('Sorry, no user found at that e-mail');
+        alertify.log('Sorry, no user found at that e-mail.');
       });
     };
 

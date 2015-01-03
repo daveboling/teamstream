@@ -1,4 +1,7 @@
 .row#project-view
     .col-xs-12
-       include ./sidebar.jade
-       div(ui-view='list')
+      .project-header
+        i.fa.fa-list-ol.proj-header.glow &nbsp; {{project.project_name}}
+
+      include ./sidebar.jade
+      div(ui-view='list')

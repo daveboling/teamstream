@@ -6,7 +6,6 @@
       $scope.logout = function(){
         window.dispatchEvent(new CustomEvent('logout', {}));
         User.logout().then(function(){
-          console.log('clicked');
           $rootScope.rootuser = null;
           $state.go('home');
         });
