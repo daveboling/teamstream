@@ -17,68 +17,69 @@
       //STREAM VIEW
     .row.sector-padding
       .col-xs-12.sector-padding
+        .add(href='' ng-click='segmentModal = true' ng-show='selectedStream') add segment
         #stream-view
-          a.add(href='' ng-click='segmentModal = true' ng-show='selectedStream') add segment
           //SEGMENTS DISPLAY
-          .segment.drop-box(ng-repeat='s in segments track by s.id' ng-file-drop ng-model='file' ng-file-change="upload(s.id, file)" drag-over-class="{accept:'dragover', reject:'dragover-err', delay:100}" accept="image/*,*pdf")
-            .row.seg-top
-              .col-xs-6
-                .seg-creator {{s.creator}}
-                img.seg-avatar(gravatar-src="s.email" gravatar-size="75")
-              .col-xs-6(style='text-align: right;')
-                .seg-created {{s.created_on | date:'MM/dd/yyyy @ h:mma'}}
-                //EDIT SEGMENT
-                .seg-edit-controls(ng-show='rootuser.username === s.creator')
-                  a(href='' ng-hide='segEdit' ng-click='segEdit = true') edit
-                  span &nbsp;
-                  a(href='' ng-hide='segEdit' ng-click='deleteSegment(s.id)') delete 
-                  a(href='' ng-show='segEdit' ng-click='segEdit = false; editSegment(s.id, s.body)') save
-                  span &nbsp;
-                  a(href='' ng-show='segEdit' ng-click='segEdit = false;') cancel
-            .seg-body(ng-bind-html='s.body')
-            .seg-edited-by(ng-show='s.edited_by') <em style='font-size: 12px;'> Last edit by: {{s.edited_by}} on {{s.date_edited | date}} </em>
-            //EDIT FORM
-            .seg-edit(ng-show='segEdit')
-              form
-                textarea(ui-tinymce, ng-model='s.body')
-            .seg-attachments(ng-hide='s.attachments[0] === null')
-              hr
-              h5 attachments:
-              .attachment(ng-repeat='a in s.attachments track by a'): a(href='{{a}}') {{a}}
-            //TOGGLE REPLIES
-            .seg-messages
-              .hide-show(ng-click='showReplys($event)')
-                span(style='display: none') show replies &nbsp;
-                i.fa.fa-angle-double-down(style='display: none')
-                span hide replies &nbsp;
-                i.fa.fa-angle-double-up
-              .seg-reply(ng-repeat='r in s.replys track by r.id')
-                .row.rep-top
-                    .col-xs-6
-                      .rep-creator {{r.creator}}
-                      img.rep-avatar(gravatar-src="r.email" gravatar-size="30")
-                    .col-xs-6(style='text-align: right;')
-                      .rep-created {{r.created_on | date:'MM/dd/yyyy @ h:mma'}}
-                      .rep-edit-controls(ng-show='rootuser.username === r.creator')
-                        a(href='' ng-hide='repEdit' ng-click='repEdit = true'): i.fa.fa-pencil-square edit &nbsp;
-                        a(href='' ng-hide='repEdit' ng-click='deleteReply(r.id)'): i.fa.fa-times-circle delete &nbsp;
-                        a(href='' ng-show='repEdit' ng-click='repEdit = false; editReply(r.id, r.body);'): i.fa.fa-check save &nbsp;
-                        a(href='' ng-show='repEdit' ng-click='repEdit = false'): i.fa.fa-times-circle cancel &nbsp;
+          .segment.drop-box.staggerFadeIn(ng-repeat='s in segments track by s.id' ng-file-drop ng-model='file' ng-file-change="upload(s.id, file)" drag-over-class="{accept:'dragover', reject:'dragover-err', delay:100}" accept="image/*,*pdf")
+            .backdrop
+              .row.seg-top
+                .col-xs-6
+                  .seg-creator {{s.creator}}
+                  img.seg-avatar(gravatar-src="s.email" gravatar-size="75")
+                .col-xs-6(style='text-align: right;')
+                  .seg-created {{s.created_on | date:'MM/dd/yyyy @ h:mma'}}
+                  //EDIT SEGMENT
+                  .seg-edit-controls(ng-show='rootuser.username === s.creator')
+                    a(href='' ng-hide='segEdit' ng-click='segEdit = true') edit
+                    span &nbsp;
+                    a(href='' ng-hide='segEdit' ng-click='deleteSegment(s.id)') delete 
+                    a(href='' ng-show='segEdit' ng-click='segEdit = false; editSegment(s.id, s.body)') save
+                    span &nbsp;
+                    a(href='' ng-show='segEdit' ng-click='segEdit = false;') cancel
+              .seg-body(ng-bind-html='s.body')
+              .seg-edited-by(ng-show='s.edited_by') <em style='font-size: 12px;'> Last edit by: {{s.edited_by}} on {{s.date_edited | date}} </em>
+              //EDIT FORM
+              .seg-edit(ng-show='segEdit')
+                form
+                  textarea(ui-tinymce, ng-model='s.body')
+              .seg-attachments(ng-hide='s.attachments[0] === null')
                 hr
-                .rep-body {{r.body}}
-                //EDIT REPLY
-                .rep-edit(ng-show='repEdit')
-                  form
-                    textarea(ng-model='r.body')
-  
-              //REPLY CONTROLS
-              a(href='' ng-hide='reply' ng-click='reply = true') reply
-              a(href='' ng-show='reply' ng-click='reply = false; createReply(s.id);') submit 
-              span &nbsp;
-              a(href='' ng-show='reply' ng-click='reply = false; replyForm.body = ""') cancel
-              .replyForm(ng-show='reply')
-                form(novalidate)
-                  textarea(type='text' ng-model='replyForm.body')
+                h5 attachments:
+                .attachment(ng-repeat='a in s.attachments track by a'): a(href='{{a}}') {{a}}
+              //TOGGLE REPLIES
+              .seg-messages
+                .hide-show(ng-click='showReplys($event)')
+                  span(style='display: none') show replies &nbsp;
+                  i.fa.fa-angle-double-down(style='display: none')
+                  span hide replies &nbsp;
+                  i.fa.fa-angle-double-up
+                .seg-reply.staggerFadeIn(ng-repeat='r in s.replys track by r.id')
+                  .row.rep-top
+                      .col-xs-6
+                        .rep-creator {{r.creator}}
+                        img.rep-avatar(gravatar-src="r.email" gravatar-size="30")
+                      .col-xs-6(style='text-align: right;')
+                        .rep-created {{r.created_on | date:'MM/dd/yyyy @ h:mma'}}
+                        .rep-edit-controls(ng-show='rootuser.username === r.creator')
+                          a(href='' ng-hide='repEdit' ng-click='repEdit = true'): i.fa.fa-pencil-square edit &nbsp;
+                          a(href='' ng-hide='repEdit' ng-click='deleteReply(r.id)'): i.fa.fa-times-circle delete &nbsp;
+                          a(href='' ng-show='repEdit' ng-click='repEdit = false; editReply(r.id, r.body);'): i.fa.fa-check save &nbsp;
+                          a(href='' ng-show='repEdit' ng-click='repEdit = false'): i.fa.fa-times-circle cancel &nbsp;
+                  hr
+                  .rep-body {{r.body}}
+                  //EDIT REPLY
+                  .rep-edit(ng-show='repEdit')
+                    form
+                      textarea(ng-model='r.body')
+    
+                //REPLY CONTROLS
+                a(href='' ng-hide='reply' ng-click='reply = true') reply
+                a(href='' ng-show='reply' ng-click='reply = false; createReply(s.id);') submit 
+                span &nbsp;
+                a(href='' ng-show='reply' ng-click='reply = false; replyForm.body = ""') cancel
+                .replyForm(ng-show='reply')
+                  form(novalidate)
+                    textarea(type='text' ng-model='replyForm.body')
 
 //MODALS
 #create-stream(ng-show='streamModal')

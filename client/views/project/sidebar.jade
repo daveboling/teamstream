@@ -4,7 +4,7 @@
 #side-bar
   label Online Users
   .online-users(ng-show='onlineUsers.length >= 1')
-    .box(ng-repeat='user in onlineUsers track by user')
+    .box.staggerFadeIn(ng-repeat='user in onlineUsers track by user')
       img(gravatar-src="user" gravatar-size="100")
       .online-circle
   .add-collaborator
@@ -16,7 +16,7 @@
   label Streams
   #stream-list
     a.add(href='' ng-click='streamModal = true')  add stream
-    .stream-sector(ng-repeat='s in streamList' ng-click='getSegments(s.id)' ng-class='{"current-selected": selectedStream === {{s.id}}, "not-current": selectedStream !== {{s.id}}}') {{s.name}}
+    .stream-sector.fadeIn(ng-repeat='s in streamList track by s.id' ng-click='getSegments(s.id)' ng-class='{"current-selected": selectedStream === {{s.id}}, "not-current": selectedStream !== {{s.id}}}') {{s.name}}
       .stream-controls
         a(href='' ng-hide='streamEdit' ng-click='streamEdit = true') edit
         a(href='' ng-show='streamEdit' ng-click='streamEdit = false; editStream(s.id, s.name)') save

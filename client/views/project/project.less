@@ -61,6 +61,7 @@
   padding: 8px;
   position: relative;
   z-index: 1;
+  font-size: 13px;
 
   .stream-edit {
     z-index: 999;
@@ -81,16 +82,22 @@
 
 // TAG STREAM VIEW
 .segment {
-  padding: 5px;
+  padding: 10px;
   margin-bottom: 5px;
   margin-right: 10px;
   margin-top: 25px;
-  border: 1px solid black;
-  background-color: white;
+  //border: 1px solid black;
+  background-color: rgb(227,227,227);
+  border-radius: 8px;
   display: inline-block;
   width: 500px;
   max-height: 100%;
   vertical-align: top;
+
+  .backdrop {
+    background-color: white;
+    padding: 5px;
+  }
 
   .seg-top {
     border-bottom: 1px solid black; 
@@ -184,7 +191,7 @@
 }
 
 #stream-view {
-  background-color: rgb(227,227,227);
+  //background-color: rgb(227,227,227);
   border-radius: 10px;
   min-height: 35px;
   width: 100%;
@@ -193,11 +200,6 @@
   white-space: nowrap;
   position: relative;
 
-  a.add{
-    position: absolute;
-    top: 5px;
-    left: 10px;
-  }
 }
 
 
@@ -290,6 +292,22 @@ div[ui-view='list'], div[ui-view='view']{
 // TAG GENERAL
 .sector-padding {
   padding: 8px;
+
+  .add{
+    background-color: rgb(227, 227, 227);
+    color: rgb(210,100,11);
+    padding: 2px;
+    text-align: center;
+    margin: 0 auto;
+    width: 150px;
+    border-radius: 5px;
+
+    &:hover {
+      .glow;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+  }
 }
 
 // TAG FILE UPLOAD
@@ -310,4 +328,30 @@ div[ui-view='list'], div[ui-view='view']{
 .rep-avatar {
   border: 1px solid rgb(227, 227, 227);
   border-radius: 5px;
+}
+
+.staggerFadeIn {
+  &.ng-enter {
+    transition: 0.5s;
+    opacity: 0;
+  }
+
+  &.ng-enter-stagger{
+    transition-delay: 0.3s;
+  }
+
+  &.ng-enter-active {
+    opacity: 1;
+  }
+}
+
+.fadeIn {
+  &.ng-enter {
+    transition: 0.5s;
+    opacity: 0;
+  }
+
+  &.ng-enter-active {
+    opacity: 1;
+  }
 }
