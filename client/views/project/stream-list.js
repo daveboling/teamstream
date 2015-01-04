@@ -53,7 +53,7 @@
       $scope.segmentForm.streamId = $scope.selectedStream;
       Project.createSegment($scope.segmentForm).then(function(res){
         var action = $rootScope.rootuser.username + ' created a new segment in ' + $('.current-selected span').text();
-        socket.emit('updateSegments', {streamId: $scope.segmentForm.streamId, activity: action, projectId: $scope.projectId});
+        socket.emit('updateSegments', {streamId: $scope.selectedStream, activity: action, projectId: $scope.projectId});
         $scope.getSegments($scope.selectedStream);
         $scope.segmentForm = {};
       });
@@ -63,7 +63,7 @@
       $scope.replyForm.segId = segId;
       Project.createReply($scope.replyForm).then(function(res){
         var action = $rootScope.rootuser.username + ' replied in ' + $('.current-selected span').text();
-        socket.emit('updateReplies', {streamId: $scope.segmentForm.streamId, activity: action, projectId: $scope.projectId});
+        socket.emit('updateReplies', {streamId: $scope.selectedStream, activity: action, projectId: $scope.projectId});
         $scope.getSegments($scope.selectedStream);
         $scope.replyForm = {};
       });
@@ -92,28 +92,32 @@
 
     $scope.deleteSegment = function(segmentId){
       Project.deleteSegment(segmentId).then(function(res){
-        socket.emit('updateSegments', $scope.selectedStream);
+        var action = $rootScope.rootuser.username + ' deleted a segment in ' + $('.current-selected span').text();
+        socket.emit('updateSegments', {streamId: $scope.selectedStream, activity: action, projectId: $scope.projectId});
         $scope.getSegments($scope.selectedStream);
       });
     };
 
-    $scope.deleteStream = function(streamId){
+    $scope.deleteStream = function(streamId, streamName){
       Project.deleteStream(streamId).then(function(res){
-        socket.emit('updateStreams');
+        var action = $rootScope.rootuser.username + ' deleted stream: ' + streamName;
+        socket.emit('updateStreams', {activity: action, projectId: $scope.projectId});
         $scope.getStreams();
       });
     };
 
     $scope.deleteReply = function(replyId){
       Project.deleteReply(replyId).then(function(res){
-        socket.emit('updateReplies', $scope.selectedStream);
+        var action = $rootScope.rootuser.username + ' deleted a reply ' + $('.current-selected span').text();
+        socket.emit('updateReplies', {streamId: $scope.selectedStream, activity: action, projectId: $scope.projectId});
         $scope.getSegments($scope.selectedStream);
       });
     };
 
     $scope.upload = function(segId, file){
       Project.addAttachment(segId, file).then(function(res){
-        socket.emit('updateSegments', $scope.selectedStream);
+        var action = $rootScope.rootuser.username + ' uploaded a file in ' + $('.current-selected span').text();
+        socket.emit('updateSegments', {streamId: $scope.selectedStream, activity: action, projectId: $scope.projectId});
         $scope.getSegments($scope.selectedStream);
       });
     };

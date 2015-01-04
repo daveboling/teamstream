@@ -21,7 +21,7 @@
       .stream-controls
         a(href='' ng-hide='streamEdit' ng-click='streamEdit = true') edit
         a(href='' ng-show='streamEdit' ng-click='streamEdit = false; editStream(s.id, s.name)') save
-        a(href='' ng-hide='streamEdit' ng-click='deleteStream(s.id)') delete
+        a(href='' ng-hide='streamEdit' ng-click='deleteStream(s.id, s.name)') delete
       .stream-edit(ng-show='streamEdit')
         form
           input(type='text' ng-model='s.name')
