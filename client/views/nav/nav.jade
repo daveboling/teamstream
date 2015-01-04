@@ -6,7 +6,7 @@
       img.middle-logo(src="assets/images/stream.png")
   .col-xs-1
   .col-xs-1
-    ul(ng-cloak)
+    ul.change(ng-cloak)
       li
         a(href='' ng-hide='rootuser.username'): img(src='assets/images/default.png')
         a(ui-sref='dashboard' ng-show='rootuser.username'): img(gravatar-src="user" gravatar-size="100")
