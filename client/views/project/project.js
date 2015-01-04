@@ -3,7 +3,7 @@
   'use strict';
   var project = angular.module('teamstream');
 
-  project.controller('ProjectCtrl', ['$scope', '$stateParams', '$rootScope', 'Project', 'Room', function($scope, $stateParams, $rootScope, Project, Room){
+  project.controller('ProjectCtrl', ['$scope', '$stateParams', '$rootScope', '$state', 'Project', 'Room', function($scope, $stateParams, $rootScope, $state, Project, Room){
     $scope.projectId = $stateParams.pid;
     $scope.project = {};
     $scope.barIsVisible = true;
@@ -17,6 +17,9 @@
     //initial function calls
     Project.findOne($scope.projectId).then(function(res){
       $scope.project = res.data[0];
+    }, function(res){
+      alertify.log('You are not a collaborator on this project.');
+      $state.go('dashboard');
     });
 
     socket.emit('userStatusChange');
