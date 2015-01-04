@@ -9,7 +9,7 @@
     ul.change(ng-cloak)
       li
         a(href='' ng-hide='rootuser.username'): img(src='assets/images/default.png')
-        a(ui-sref='dashboard' ng-show='rootuser.username'): img(gravatar-src="user" gravatar-size="100")
+        a(ui-sref='dashboard' ng-show='rootuser.username'): img(gravatar-src="rootuser.email" gravatar-size="100")
         .dropdown
            ul.right(ng-show='!rootuser.username')
              li: a(ui-sref='login') Login
