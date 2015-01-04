@@ -21,6 +21,7 @@
             $rootScope.rootuser = response.data;
             $state.go('home');
           }, function(){
+            $('#login-register form').fadeIn(100);
             alertify.log('Incorrect login information, email or password.');
             $scope.user = {};
           });

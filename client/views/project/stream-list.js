@@ -71,21 +71,24 @@
 
     $scope.editSegment = function(segmentId, body){
       Project.editSegment({body: body, segmentId: segmentId}).then(function(res){
-        socket.emit('updateSegments', $scope.selectedStream);
+        var action = $rootScope.rootuser.username + ' edited a segment in ' + $('.current-selected span').text();
+        socket.emit('updateSegments', {streamId: $scope.selectedStream, activity: action, projectId: $scope.projectId});
         $scope.getSegments($scope.selectedStream);
       });
     };
 
     $scope.editReply = function(replyId, body){
       Project.editReply({body: body, replyId: replyId}).then(function(res){
-        socket.emit('updateReplies', $scope.selectedStream);
+        var action = $rootScope.rootuser.username + ' edited a reply in ' + $('.current-selected span').text();
+        socket.emit('updateReplies', {streamId: $scope.selectedStream, activity: action, projectId: $scope.projectId});
         $scope.getSegments($scope.selectedStream);
       });
     };
 
     $scope.editStream = function(streamId, name){
       Project.editStream({streamId: streamId, name: name}).then(function(res){
-        socket.emit('updateStreams');
+        var action = $rootScope.rootuser.username + ' edited ' + $('.current-selected span').text();
+        socket.emit('updateStreams', {activity: action, projectId: $scope.projectId});
         $scope.getStreams();
       });
     };
@@ -108,7 +111,7 @@
 
     $scope.deleteReply = function(replyId){
       Project.deleteReply(replyId).then(function(res){
-        var action = $rootScope.rootuser.username + ' deleted a reply ' + $('.current-selected span').text();
+        var action = $rootScope.rootuser.username + ' deleted a reply in ' + $('.current-selected span').text();
         socket.emit('updateReplies', {streamId: $scope.selectedStream, activity: action, projectId: $scope.projectId});
         $scope.getSegments($scope.selectedStream);
       });
