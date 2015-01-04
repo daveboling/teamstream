@@ -16,7 +16,8 @@
   label Streams
   #stream-list
     a.add(href='' ng-click='streamModal = true')  add stream
-    .stream-sector.fadeIn(ng-repeat='s in streamList track by s.id' ng-click='getSegments(s.id)' ng-class='{"current-selected": selectedStream === {{s.id}}, "not-current": selectedStream !== {{s.id}}}') {{s.name}}
+    .stream-sector.fadeIn(ng-repeat='s in streamList track by s.id' ng-click='getSegments(s.id)' ng-class='{"current-selected": selectedStream === {{s.id}}, "not-current": selectedStream !== {{s.id}}}') 
+      span {{s.name}}
       .stream-controls
         a(href='' ng-hide='streamEdit' ng-click='streamEdit = true') edit
         a(href='' ng-show='streamEdit' ng-click='streamEdit = false; editStream(s.id, s.name)') save

@@ -3,7 +3,7 @@
   'use strict';
   var streamList = angular.module('teamstream');
 
-  streamList.controller('StreamListCtrl', ['$scope', 'Project', function($scope, Project){
+  streamList.controller('StreamListCtrl', ['$scope', '$rootScope', 'Project', function($scope, $rootScope, Project){
     $scope.streamList = [];
     $scope.selectedStream = null;
     $scope.streamForm = {projectId: $scope.projectId};
@@ -42,7 +42,8 @@
 
     $scope.createStream = function(){
       Project.createStream($scope.streamForm).then(function(res){
-        socket.emit('updateStreams');
+        var action = $rootScope.rootuser.username + ' created a new stream called ' + $scope.streamForm.name;
+        socket.emit('updateStreams', {activity: action, projectId: $scope.projectId});
         $scope.getStreams(); //needs to be taken out later
         $scope.streamForm.name = '';
       });
@@ -51,7 +52,8 @@
     $scope.createSegment = function(){
       $scope.segmentForm.streamId = $scope.selectedStream;
       Project.createSegment($scope.segmentForm).then(function(res){
-        socket.emit('updateSegments', $scope.segmentForm.streamId);
+        var action = $rootScope.rootuser.username + ' created a new segment in ' + $('.current-selected span').text();
+        socket.emit('updateSegments', {streamId: $scope.segmentForm.streamId, activity: action, projectId: $scope.projectId});
         $scope.getSegments($scope.selectedStream);
         $scope.segmentForm = {};
       });
@@ -60,7 +62,8 @@
     $scope.createReply = function(segId){
       $scope.replyForm.segId = segId;
       Project.createReply($scope.replyForm).then(function(res){
-        socket.emit('updateReplies', $scope.selectedStream);
+        var action = $rootScope.rootuser.username + ' replied in ' + $('.current-selected span').text();
+        socket.emit('updateReplies', {streamId: $scope.segmentForm.streamId, activity: action, projectId: $scope.projectId});
         $scope.getSegments($scope.selectedStream);
         $scope.replyForm = {};
       });

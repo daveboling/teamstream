@@ -1,5 +1,7 @@
 'use strict';
 
+var Activity = require('../models/activity');
+
 module.exports = function(socket){
   socket.emit('online');
   socket.on('joinRoom', joinRoom);
@@ -26,17 +28,23 @@ function joinRoom(data){
 
 function updateStreams(data){
   var socket = this;
-  socket.broadcast.emit('updateStreams', data);
+  Activity.create(data, function(err){
+    socket.broadcast.emit('updateStreams', data);
+  });
 }
 
-function updateSegments(streamId){
+function updateSegments(data){
   var socket = this;
-  socket.broadcast.emit('updateSegments', streamId);
+  Activity.create(data, function(err){
+    socket.broadcast.emit('updateSegments', data.streamId);
+  });
 }
 
-function updateReplies(streamId){
+function updateReplies(data){
   var socket = this;
-  socket.broadcast.emit('updateReplies', streamId);
+  Activity.create(data, function(err){
+    socket.broadcast.emit('updateReplies', data.streamId);
+  });
 }
 
 function updateStatus(){
