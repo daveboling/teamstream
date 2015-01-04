@@ -1,7 +1,7 @@
 (function(){
   'use strict';
 
-  angular.module('teamstream', ['ui.router', 'ui.tinymce', 'ngSanitize', 'angularFileUpload', 'ui.gravatar', 'ngAnimate'])
+  angular.module('teamstream', ['ui.router', 'ui.tinymce', 'ngSanitize', 'angularFileUpload', 'ui.gravatar', 'ngAnimate', 'googleplus'])
     .config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $urlRouterProvider){
       $urlRouterProvider.otherwise('/');
 
@@ -42,6 +42,11 @@
       }, function(){
         $rootScope.rootuser = null;
       });
+    }]).config(['GooglePlusProvider', function(GooglePlusProvider){
+       GooglePlusProvider.init({
+          clientId: '602377863709-l4rl5evg1mdhrvu0blspcuilkhjihsdv.apps.googleusercontent.com',
+          apiKey: 'AIzaSyBTLgYikzQ5kCN3dEAkIqLmHK29CEKPJqk'
+       });
     }]);
 })();
 

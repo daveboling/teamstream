@@ -1,11 +1,11 @@
 'use strict';
 
-var Hapi         = require('hapi'),
-  server         = new Hapi.Server(),
-  routes         = require('./routes'),
-  plugins        = require('./config/plugins'),
-  authentication = require('./config/authentication'),
-  mongoose       = require('mongoose').connect(process.env.DB);
+var Hapi               = require('hapi'),
+  server               = new Hapi.Server(),
+  routes               = require('./routes'),
+  plugins              = require('./config/plugins'),
+  authentication       = require('./config/authentication'),
+  mongoose             = require('mongoose').connect(process.env.DB);
 
 //server config
 server.connection({port: process.env.PORT});
