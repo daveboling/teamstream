@@ -41,7 +41,7 @@
               //EDIT FORM
               .seg-edit(ng-show='segEdit')
                 form
-                  textarea(ui-tinymce, ng-model='s.body')
+                  textarea(ui-tinymce='tinymceOptions', ng-model='s.body')
               .seg-attachments(ng-hide='s.attachments[0] === null')
                 hr
                 h5 attachments:
@@ -53,7 +53,7 @@
                   i.fa.fa-angle-double-down(style='display: none')
                   span hide replies &nbsp;
                   i.fa.fa-angle-double-up
-                .seg-reply.staggerFadeIn(ng-repeat='r in s.replys track by r.id')
+                .seg-reply.staggerFadeIn(ng-repeat='r in s.replys | orderBy : "created_on" track by r.id ')
                   .row.rep-top
                       .col-xs-6
                         .rep-creator {{r.creator}}

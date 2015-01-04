@@ -41,30 +41,3 @@ function iterator(row, cb){
   });
 }
 
-//for use later
-function deleteAttachments(segId, attachments){
-  var s3   = new AWS.S3(),
-  params = {
-    Bucket: process.env.AWS_BUCKET,
-    Delete: { /* required */
-      Objects: [ /* required */
-        {
-          Key: 'STRING_VALUE' /* required */
-        }
-      ],
-      Quiet: true
-    }
-  };
-
-  //no big callback needed since segment this is taken care of on AWS
-  s3.deleteObjects(params, function(err, data){
-    if (err) {
-      console.log(err, err.stack);
-    }
-    else {
-      console.log(data);
-    }
-  });
-}
-
-

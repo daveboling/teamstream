@@ -4,22 +4,16 @@
       h2 {{pageHeader}}
       form
         .field
-          label(for='username') Username
-          input.input(type='text', name='username', ng-model='user.username', autofocus)
+          label(for='username') Name
+          input.input(type='text', name='username', ng-model='user.username', autofocus, placeholder='John Smith')
         .field
           label(for='password') Password
-          input.input(type='password', name='password', ng-model='user.password')
+          input.input(type='password', name='password', ng-model='user.password', placeholder='Enter a password')
 
         .register-page(ng-show='mode === "register"')
           .field
             label(for='email' ) E-mail
-            input.input(type='email', name='email', ng-model='user.email')
-          .field
-            label(for='firstname' ) First Name
-            input.input(type='firstname', name='firstname')
-          .field
-            label(for='lastname' ) Last Name
-            input.input(type='lastname', name='lastname')
+            input.input(type='email', name='email', ng-model='user.email', placeholder='johnnyboi@gmail.com')
 
         button.btn.secondary.large.metro(ng-show='mode === "login"' ng-click='submit()'): a(href='') Sign In
         button.btn.secondary.large.metro(ng-show='mode === "register"' ng-click='submit()'): a(href='') Register
