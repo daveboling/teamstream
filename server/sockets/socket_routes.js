@@ -30,6 +30,8 @@ function updateStreams(data){
   var socket = this;
   Activity.create(data, function(err){
     socket.broadcast.emit('updateStreams', data);
+    socket.broadcast.emit('projectUpdate');
+    socket.emit('projectUpdate');
   });
 }
 
@@ -37,6 +39,8 @@ function updateSegments(data){
   var socket = this;
   Activity.create(data, function(err){
     socket.broadcast.emit('updateSegments', data.streamId);
+    socket.broadcast.emit('projectUpdate');
+    socket.emit('projectUpdate');
   });
 }
 
@@ -44,6 +48,8 @@ function updateReplies(data){
   var socket = this;
   Activity.create(data, function(err){
     socket.broadcast.emit('updateReplies', data.streamId);
+    socket.broadcast.emit('projectUpdate');
+    socket.emit('projectUpdate');
   });
 }
 

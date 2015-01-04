@@ -3,16 +3,20 @@
   'use strict';
   var project = angular.module('teamstream');
 
-  project.controller('ProjectCtrl', ['$scope', '$stateParams', '$rootScope', '$state', 'Project', 'Room', function($scope, $stateParams, $rootScope, $state, Project, Room){
+  project.controller('ProjectCtrl', ['$scope', '$stateParams', '$rootScope', '$state', 'Project', 'Room', 'Activity', function($scope, $stateParams, $rootScope, $state, Project, Room, Activity){
     $scope.projectId = $stateParams.pid;
     $scope.project = {};
     $scope.barIsVisible = true;
     $scope.onlineUsers = [];
-    $scope.activity = [
-      'Dave hit the jackpot',
-      'Joe made a new note.',
-      'Epsilon meowed because she wanted out.'
-    ];
+    $scope.activities = [];
+    $scope.moment = moment;
+
+
+    $scope.getActivities = function(){
+      Activity.getActivities($scope.projectId).then(function(res){
+        $scope.activities = res.data;
+      });
+    };
 
     //initial function calls
     Project.findOne($scope.projectId).then(function(res){
@@ -22,8 +26,12 @@
       $state.go('dashboard');
     });
 
+    $scope.getActivities();
+
     socket.emit('userStatusChange');
     //end intial function calls
+
+
 
     //add collaborator to a project
     $scope.addCollaborator = function(email){
@@ -89,6 +97,11 @@
       $scope.getOnlineUsers();
     });
 
+    //socket event for when a new event comes through anytime anything is updated
+    socket.off('projectUpdate');
+    socket.on('projectUpdate', function(){
+      $scope.getActivities();
+    });
 
 
   }]);

@@ -29,6 +29,6 @@
       
   label Activity Monitor
   .activity-monitor
-    .activity(ng-repeat='a in activity') {{a}}
+    .activity.fadeIn(ng-repeat='a in activities | orderBy : "date" : true track by a._id') {{a.activity}} <em> {{moment(a.date).fromNow()}} </em>
 
   

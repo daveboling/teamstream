@@ -1,0 +1,20 @@
+{
+    "_id" : {"$oid" : "000000000000000000000005"},
+    "activity" : "bob replied in Stream Two",
+    "projectId" : 1,
+    "date" : "2015-01-04T03:05:52.740Z"
+},
+{
+    "_id" : {"$oid" : "000000000000000000000006"},
+    "activity" : "sue replied in Stream One",
+    "projectId" : 1,
+    "date" : "2015-05-04T03:05:52.740Z"
+},
+{
+    "_id" : {"$oid" : "000000000000000000000007"},
+    "activity" : "jim made a segment in Stream Three",
+    "projectId" : 1,
+    "date" : "2015-02-04T03:05:52.740Z"
+}
+
+

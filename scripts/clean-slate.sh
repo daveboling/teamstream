@@ -23,6 +23,7 @@ psql $1 -f ../db/functions/get_replys.sql
 #create data
 psql $1 -f ./data.sql
 mongoimport --jsonArray --drop --db $1 --collection rooms --file rooms.json
+mongoimport --jsonArray --drop --db $1 --collection activities --file activities.json
 
 
 echo -e "The slate has been cleaned."

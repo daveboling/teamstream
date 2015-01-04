@@ -23,5 +23,6 @@ module.exports = [
   {method: 'delete', path: '/project/reply/delete/{replyId}',   config: require('./controllers/projects/delete_reply')},
   {method: 'post',   path: '/project/attachment/add/{segId}',   config: require('./controllers/projects/add_attachment')},
   {method: 'put',    path: '/project/offline/{projectId}',      config: require('./controllers/rooms/go_offline')},
-  {method: 'get',    path: '/project/room/users/{projectId}',   config: require('./controllers/rooms/get_online_users')}
+  {method: 'get',    path: '/project/room/users/{projectId}',   config: require('./controllers/rooms/get_online_users')},
+  {method: 'get',    path: '/project/{projectId}/activities',    config: require('./controllers/activities/get_activities')}
 ];
