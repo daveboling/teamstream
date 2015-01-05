@@ -22,7 +22,7 @@
     Project.findOne($scope.projectId).then(function(res){
       $scope.project = res.data[0];
     }, function(res){
-      alertify.log('You are not a collaborator on this project.');
+      alertify.error('You are not a collaborator on this project.');
       $state.go('dashboard');
     });
 
@@ -36,9 +36,9 @@
     //add collaborator to a project
     $scope.addCollaborator = function(email){
       Project.addCollaborator({email: email, projectId: $scope.projectId}).then(function(res){
-        alertify.log('Added user to: ' + $scope.project.project_name);
+        alertify.success('Added user to: ' + $scope.project.project_name);
       }, function(res){
-        alertify.log('Sorry, no user found at that e-mail.');
+        alertify.error('Sorry, no user found at that e-mail.');
       });
     };
 

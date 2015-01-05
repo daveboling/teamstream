@@ -1,0 +1,59 @@
+.alertify,
+.alertify-log {
+  font-family: "Ubuntu", sans-serif;
+}
+.alertify {
+  background: #FFF;
+  border: 1px solid #333; /* browsers that don't support rgba */
+  border: 1px solid rgba(0,0,0,.7);
+}
+
+.alertify-text {
+  border: 1px solid #CCC;
+  padding: 10px;
+}
+
+.alertify-button {
+  color: #FFF;
+  font-weight: bold;
+  padding: 6px 15px;
+  text-decoration: none;
+  /*background-color: rgb(66,163,90);*/
+}
+
+/*.alertify-button:hover,
+.alertify-button:focus {
+  background-color: rgb(66,200,200);
+}*/
+
+.alertify-button:active {
+  position: relative;
+}
+
+.alertify-button-cancel,
+.alertify-button-cancel:hover,
+.alertify-button-cancel:focus {
+  background-color: rgb(202,56,56);
+}
+.alertify-button-ok,
+.alertify-button-ok:hover,
+.alertify-button-ok:focus {
+  background-color: rgb(66,200,90);
+}
+
+.alertify-log {
+  background: #1F1F1F;
+  background: rgba(0,0,0,.9);
+  padding: 15px;
+  color: #FFF;
+}
+
+.alertify-log-error {
+  color: white;
+  background-color: rgb(202,56,56);
+}
+
+.alertify-log-success {
+  color: white;
+  background-color: rgb(66,163,90);
+}

@@ -106,27 +106,40 @@
     };
 
     $scope.deleteSegment = function(segmentId){
-      Project.deleteSegment(segmentId).then(function(res){
-        var action = $rootScope.rootuser.username + ' deleted a segment in ' + $('.current-selected span').text();
-        socket.emit('updateSegments', {streamId: $scope.selectedStream, activity: action, projectId: $scope.projectId});
-        $scope.getSegments($scope.selectedStream);
+      alertify.confirm('Deletion will remove all replies and attachments too. Are you sure?', function(e){
+        if (e){
+          Project.deleteSegment(segmentId).then(function(res){
+            var action = $rootScope.rootuser.username + ' deleted a segment in ' + $('.current-selected span').text();
+            socket.emit('updateSegments', {streamId: $scope.selectedStream, activity: action, projectId: $scope.projectId});
+            $scope.getSegments($scope.selectedStream);
+          });
+        }
       });
+
     };
 
     $scope.deleteStream = function(streamId, streamName){
-      Project.deleteStream(streamId).then(function(res){
-        var action = $rootScope.rootuser.username + ' deleted stream: ' + streamName;
-        socket.emit('updateStreams', {activity: action, projectId: $scope.projectId});
-        $scope.selectedStream = null;
-        $scope.getStreams();
+      alertify.confirm('Deletion will remove all segments, attachments and replies. Are you sure?', function(e){
+        if (e){
+          Project.deleteStream(streamId).then(function(res){
+            var action = $rootScope.rootuser.username + ' deleted stream: ' + streamName;
+            socket.emit('updateStreams', {activity: action, projectId: $scope.projectId});
+            $scope.selectedStream = null;
+            $scope.getStreams();
+          });
+        }
       });
     };
 
     $scope.deleteReply = function(replyId){
-      Project.deleteReply(replyId).then(function(res){
-        var action = $rootScope.rootuser.username + ' deleted a reply in ' + $('.current-selected span').text();
-        socket.emit('updateReplies', {streamId: $scope.selectedStream, activity: action, projectId: $scope.projectId});
-        $scope.getSegments($scope.selectedStream);
+      alertify.confirm('Are you sure you want to delete this reply?', function(e){
+        if (e){
+          Project.deleteReply(replyId).then(function(res){
+            var action = $rootScope.rootuser.username + ' deleted a reply in ' + $('.current-selected span').text();
+            socket.emit('updateReplies', {streamId: $scope.selectedStream, activity: action, projectId: $scope.projectId});
+            $scope.getSegments($scope.selectedStream);
+          });
+        }
       });
     };
 
@@ -147,7 +160,7 @@
           //return to live segments
           $scope.getSegments($scope.selectedStream);
 
-          alertify.log('Segment successfully ' + segStatus + '.');
+          alertify.success('Segment successfully ' + segStatus + '.');
       });
     };
 
