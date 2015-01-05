@@ -116,6 +116,7 @@
       Project.deleteStream(streamId).then(function(res){
         var action = $rootScope.rootuser.username + ' deleted stream: ' + streamName;
         socket.emit('updateStreams', {activity: action, projectId: $scope.projectId});
+        $scope.selectedStream = null;
         $scope.getStreams();
       });
     };
