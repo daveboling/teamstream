@@ -90,7 +90,6 @@
       }
     });
 
-
     //socket event to reflect when a user goes offline
     socket.off('statusChange');
     socket.on('statusChange', function(){

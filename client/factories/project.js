@@ -1,3 +1,4 @@
+/* jshint camelcase:false */
 (function(){
   'use strict';
 
@@ -72,6 +73,14 @@
       });
     }
 
+    function toggleArchive(segment){
+      return $http.put('/project/segment/archive', {segId: segment.id, is_archived: segment.is_archived});
+    }
+
+    function getArchivedSegments(sid){
+      return $http.get('/project/segment/archive/'+sid);
+    }
+
     return {
       getAll: getAll,
       getStreams: getStreams,
@@ -88,7 +97,9 @@
       deleteStream: deleteStream,
       deleteReply: deleteReply,
       addCollaborator: addCollaborator,
-      addAttachment: addAttachment
+      addAttachment: addAttachment,
+      toggleArchive: toggleArchive,
+      getArchivedSegments: getArchivedSegments
     };
   }]);
 })();

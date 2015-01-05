@@ -37,7 +37,6 @@ function updateStreams(data){
 
 function updateSegments(data){
   var socket = this;
-  console.log(data);
   Activity.create(data, function(err){
     socket.broadcast.emit('updateSegments', data.streamId);
     socket.broadcast.emit('projectUpdate');

@@ -294,19 +294,30 @@ div[ui-view='list'], div[ui-view='view']{
 .sector-padding {
   padding: 8px;
 
-  .add{
-    background-color: rgb(227, 227, 227);
-    color: rgb(210,100,11);
-    padding: 2px;
+  .segment-controls {
+    width: 100%;
     text-align: center;
-    margin: 0 auto;
-    width: 150px;
-    border-radius: 5px;
 
-    &:hover {
-      .glow;
-      cursor: pointer;
-      transition: 0.3s;
+    .add{
+      background-color: rgb(227, 227, 227);
+      color: rgb(210,100,11);
+      padding: 2px;
+      text-align: center;
+      margin: 0 auto;
+      width: 150px;
+      border-radius: 5px;
+      display: inline-block;
+
+      &:hover {
+        .glow;
+        cursor: pointer;
+        transition: 0.3s;
+      }
+
+      &.ng-leave {
+        transition: 0;
+        opacity: 0;
+      }
     }
   }
 }

@@ -36,6 +36,15 @@
       });
     };
 
+    $scope.getArchivedSegments = function(sid){
+      $scope.selectedStream = sid;
+      Project.getArchivedSegments(sid).then(function(res){
+        $scope.segments = res.data;
+      }, function(res){
+        console.log('There are currently no segments in this stream. Try adding one.');
+      });
+    };
+
     $scope.selectStream = function(sid){
       $scope.getSegments(sid);
     };
@@ -122,6 +131,19 @@
         var action = $rootScope.rootuser.username + ' uploaded a file in ' + $('.current-selected span').text();
         socket.emit('updateSegments', {streamId: $scope.selectedStream, activity: action, projectId: $scope.projectId});
         $scope.getSegments($scope.selectedStream);
+      });
+    };
+
+    $scope.toggleArchive = function(segment){
+      Project.toggleArchive(segment).then(function(res){
+          var segStatus = segment.is_archived ? ' unarchived' : ' archived',
+          action = $rootScope.rootuser.username + segStatus + ' ' + segStatus + ' a segment in ' + $('.current-selected span').text();
+          socket.emit('updateSegments', {streamId: $scope.selectedStream, activity: action, projectId: $scope.projectId});
+
+          //return to live segments
+          $scope.getSegments($scope.selectedStream);
+
+          alertify.log('Segment successfully ' + segStatus + '.');
       });
     };
 

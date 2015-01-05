@@ -24,12 +24,26 @@ Segment.getAll = function(obj, cb){
   });
 };
 
+Segment.getArchived = function(obj, cb){
+  pg.query('select * from get_archived($1)', [obj.segId], function(err, results){
+    if(err){return cb(err);}
+    async.map(results.rows, iterator, function(err, segments){
+      if(err){return cb(err);}
+      cb(null, segments);
+    });
+  });
+};
+
 Segment.update = function(obj, user, cb){
   pg.query('update segments set body = $1, edited_by = $2, date_edited = now() where id = $3;', [obj.body, user.username, obj.segmentId], cb);
 };
 
 Segment.delete = function(segId, cb){
   pg.query('delete from segments where id = $1', [segId], cb);
+};
+
+Segment.toggleArchive = function(segId, isArchived, cb){
+  pg.query('update segments set is_archived = $1 where id = $2', [(isArchived ? false : true), segId], cb);
 };
 
 module.exports = Segment;

@@ -17,8 +17,7 @@ psql $1 -f ../db/functions/get_streams.sql
 psql $1 -f ../db/functions/get_projects.sql
 psql $1 -f ../db/functions/get_segments.sql
 psql $1 -f ../db/functions/get_replys.sql
-#psql $1 -f ../db/functions/delete_segment.sql
-
+psql $1 -f ../db/functions/get_archived.sql
 
 #create data
 psql $1 -f ./data.sql

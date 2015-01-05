@@ -18,6 +18,8 @@ module.exports = [
   {method: 'post',   path: '/project/segment/create',           config: require('./controllers/projects/create_segment')},
   {method: 'put',    path: '/project/segment/edit',             config: require('./controllers/projects/edit_segment')},
   {method: 'delete', path: '/project/segment/delete/{segId}',   config: require('./controllers/projects/delete_segment')},
+  {method: 'put',    path: '/project/segment/archive',          config: require('./controllers/projects/archive_segment')},
+  {method: 'get',    path: '/project/segment/archive/{segId}',  config: require('./controllers/projects/get_segment_archive')},
   {method: 'post',   path: '/project/reply/create',             config: require('./controllers/projects/create_reply')},
   {method: 'put',    path: '/project/reply/edit',               config: require('./controllers/projects/edit_reply')},
   {method: 'delete', path: '/project/reply/delete/{replyId}',   config: require('./controllers/projects/delete_reply')},
