@@ -29,9 +29,9 @@
     };
 
     $scope.getSegments = function(sid){
-      $scope.toggleButton = true;
       $scope.selectedStream = sid;
       Project.getSegments(sid).then(function(res){
+      $scope.toggleButton = true;
         $scope.segments = res.data;
       }, function(res){
         console.log('There are currently no segments in this stream. Try adding one.');
@@ -41,6 +41,7 @@
     $scope.getArchivedSegments = function(sid){
       $scope.selectedStream = sid;
       Project.getArchivedSegments(sid).then(function(res){
+      $scope.toggleButton = false;
         $scope.segments = res.data;
       }, function(res){
         console.log('There are currently no segments in this stream. Try adding one.');

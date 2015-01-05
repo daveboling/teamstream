@@ -4,11 +4,11 @@
       .col-xs-12.sector-padding
         .segment-controls
           .btn.secondary.medium.metro(ng-click='segmentModal = true' ng-show='selectedStream'): a(href='') Add Segment
-          .btn.secondary.medium.metro(ng-click='toggleButton = false; getArchivedSegments(selectedStream)' ng-show='selectedStream' ng-class='{"select-secondary": !toggleButton, "deselect-secondary": toggleButton}'): a(href='') Archived Segments
-          .btn.secondary.medium.metro(ng-click='toggleButton = true; getSegments(selectedStream)' ng-show='selectedStream' ng-class='{"select-secondary": toggleButton, "deselect-secondary": !toggleButton}'): a(href='') Live Segments
+          .btn.secondary.medium.metro(ng-click='getArchivedSegments(selectedStream)' ng-show='selectedStream' ng-class='{"select-secondary": !toggleButton, "deselect-secondary": toggleButton}'): a(href='') Archived Segments
+          .btn.secondary.medium.metro(ng-click='getSegments(selectedStream)' ng-show='selectedStream' ng-class='{"select-secondary": toggleButton, "deselect-secondary": !toggleButton}'): a(href='') Live Segments
         #stream-view
           //SEGMENTS DISPLAY
-          .segment.drop-box.staggerFadeIn(ng-repeat='s in segments track by s.id' ng-file-drop ng-model='file' ng-file-change="upload(s.id, file)" drag-over-class="{accept:'dragover', reject:'dragover-err', delay:100}" accept="image/*,*pdf")
+          .segment.drop-box.staggerFadeIn(ng-repeat='s in segments track by s.id' ng-cloak ng-file-drop ng-model='file' ng-file-change="upload(s.id, file)" drag-over-class="{accept:'dragover', reject:'dragover-err', delay:100}" accept="image/*,*pdf")
             .backdrop
               .row.seg-top
                 .col-xs-6
@@ -18,12 +18,12 @@
                   .seg-created {{s.created_on | date:'MM/dd/yyyy @ h:mma'}}
                   //EDIT SEGMENT
                   .seg-edit-controls(ng-show='rootuser.username === s.creator')
-                    a(href='' ng-hide='segEdit' ng-click='segEdit = true') edit
+                    a(href='' ng-hide='segEdit; !toggleButton' ng-click='segEdit = true') edit
                     span &nbsp;
                     a(href='' ng-hide='s.is_archived' ng-click='toggleArchive(s)') archive
                     a(href='' ng-show='s.is_archived' ng-click='toggleArchive(s)') unarchive
                     span &nbsp;
-                    a(href='' ng-hide='segEdit' ng-click='deleteSegment(s.id)') delete 
+                    a(href='' ng-hide='segEdit; !toggleButton' ng-click='deleteSegment(s.id)') delete 
                     a(href='' ng-show='segEdit' ng-click='segEdit = false; editSegment(s.id, s.body)') save
                     span &nbsp;
                     a(href='' ng-show='segEdit' ng-click='segEdit = false;') cancel
@@ -51,7 +51,7 @@
                         img.rep-avatar(gravatar-src="r.email" gravatar-size="30")
                       .col-xs-6(style='text-align: right;')
                         .rep-created {{r.created_on | date:'MM/dd/yyyy @ h:mma'}}
-                        .rep-edit-controls(ng-show='rootuser.username === r.creator')
+                        .rep-edit-controls(ng-show='rootuser.username === r.creator; toggleButton')
                           a(href='' ng-hide='repEdit' ng-click='repEdit = true'): i.fa.fa-pencil-square edit &nbsp;
                           a(href='' ng-hide='repEdit' ng-click='deleteReply(r.id)'): i.fa.fa-times-circle delete &nbsp;
                           a(href='' ng-show='repEdit' ng-click='repEdit = false; editReply(r.id, r.body);'): i.fa.fa-check save &nbsp;
@@ -64,7 +64,7 @@
                       textarea(ng-model='r.body')
     
                 //REPLY CONTROLS
-                a(href='' ng-hide='reply' ng-click='reply = true') reply
+                a(href='' ng-hide='reply; !toggleButton' ng-click='reply = true') reply
                 a(href='' ng-show='reply' ng-click='reply = false; createReply(s.id);') submit 
                 span &nbsp;
                 a(href='' ng-show='reply' ng-click='reply = false; replyForm.body = ""') cancel
