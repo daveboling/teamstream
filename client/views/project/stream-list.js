@@ -10,6 +10,7 @@
     $scope.segmentForm = {};
     $scope.replyForm = {};
     $scope.segments = [];
+    $scope.toggleButton = true;
 
     $scope.getStreams = function(){
       Project.getStreams($scope.projectId).then(function(res){
@@ -28,6 +29,7 @@
     };
 
     $scope.getSegments = function(sid){
+      $scope.toggleButton = true;
       $scope.selectedStream = sid;
       Project.getSegments(sid).then(function(res){
         $scope.segments = res.data;

@@ -1,26 +1,11 @@
 .row
   .col-xs-12
     .row.sector-padding
-      //- //STREAM LIST
-      //- .col-xs-12.sector-padding
-      //-   #stream-list
-      //-     a.add(href='' ng-click='streamModal = true')  add stream
-      //-     .stream-sector(ng-repeat='s in streamList' ng-click='getSegments(s.id)' ng-class='{"current-selected": selectedStream === {{s.id}}, "not-current": selectedStream !== {{s.id}}}') {{s.name}}
-      //-       .stream-controls
-      //-         a(href='' ng-hide='streamEdit' ng-click='streamEdit = true') edit
-      //-         a(href='' ng-show='streamEdit' ng-click='streamEdit = false; editStream(s.id, s.name)') save
-      //-         a(href='' ng-hide='streamEdit' ng-click='deleteStream(s.id)') delete
-      //-       .stream-edit(ng-show='streamEdit')
-      //-         form
-      //-           input(type='text' ng-model='s.name')
-
-      //STREAM VIEW
-    .row.sector-padding
       .col-xs-12.sector-padding
         .segment-controls
           .btn.secondary.medium.metro(ng-click='segmentModal = true' ng-show='selectedStream'): a(href='') Add Segment
-          .btn.secondary.medium.metro(ng-click='getArchivedSegments(selectedStream)' ng-show='selectedStream'): a(href='') Archived Segments
-          .btn.secondary.medium.metro(ng-click='getSegments(selectedStream)' ng-show='selectedStream'): a(href='') Live Segments
+          .btn.secondary.medium.metro(ng-click='toggleButton = false; getArchivedSegments(selectedStream)' ng-show='selectedStream' ng-class='{"select-secondary": !toggleButton, "deselect-secondary": toggleButton}'): a(href='') Archived Segments
+          .btn.secondary.medium.metro(ng-click='toggleButton = true; getSegments(selectedStream)' ng-show='selectedStream' ng-class='{"select-secondary": toggleButton, "deselect-secondary": !toggleButton}'): a(href='') Live Segments
         #stream-view
           //SEGMENTS DISPLAY
           .segment.drop-box.staggerFadeIn(ng-repeat='s in segments track by s.id' ng-file-drop ng-model='file' ng-file-change="upload(s.id, file)" drag-over-class="{accept:'dragover', reject:'dragover-err', delay:100}" accept="image/*,*pdf")
