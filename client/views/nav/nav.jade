@@ -1,21 +1,33 @@
 #nav1.row.navbar.metro(style='min-width: 100%' ng-controller='NavCtrl')
-  .col-xs-2
-    h4.logo
-      a.middle-logo(ui-sref='home' style='font-family: "Amaranth", sans-serif') teamstream
-  .col-xs-8(style='text-align: center;')
-      img.middle-logo(src="assets/images/stream.png")
-  .col-xs-1
-  .col-xs-1
-    ul.change(ng-cloak)
-      li
-        a(href='' ng-hide='rootuser.username'): img(src='assets/images/default.png')
-        a(ui-sref='dashboard' ng-show='rootuser.username'): img(gravatar-src="rootuser.email" gravatar-size="100")
-        .dropdown
-           ul.right(ng-show='!rootuser.username')
-             li: a(ui-sref='login') Login
-             li: a(ui-sref='register') Register
-           ul.right(ng-show='rootuser.username')
-             li: .nav-user-name {{rootuser.username}}
-             li: a(ui-sref='home') Home
-             li: a(ui-sref='dashboard') Dashboard
-             li: a(href='' ng-click='logout()') Logout
+    .desktop
+      .col-xs-2
+        h4.logo
+          a.middle-logo(ui-sref='home' style='font-family: "Amaranth", sans-serif') teamstream
+      .col-xs-8(style='text-align: center;')
+          img.middle-logo(src="assets/images/stream.png")
+      .col-xs-1
+      .col-xs-1
+        ul.change(ng-cloak)
+          li
+            a(href='' ng-hide='rootuser.username'): img(src='assets/images/default.png')
+            a(ui-sref='dashboard' ng-show='rootuser.username'): img(gravatar-src="rootuser.email" gravatar-size="100")
+            .dropdown
+               ul.right(ng-show='!rootuser.username')
+                 li: a(ui-sref='login') Login
+                 li: a(ui-sref='register') Register
+               ul.right(ng-show='rootuser.username')
+                 li: .nav-user-name {{rootuser.username}}
+                 li: a(ui-sref='home') Home
+                 li: a(ui-sref='dashboard') Dashboard
+                 li: a(href='' ng-click='logout()') Logout
+    .mobile(style='min-width: 100%;')
+      .row
+        .col-xs-6
+           h5.logo
+             a.middle-logo(ui-sref='home' style='font-family: "Amaranth", sans-serif') teamstream
+        .col-xs-6
+          .mobile-nav(style='text-align: right;')
+               a(ui-sref='login' ng-show='!rootuser.username') Login
+               a(ui-sref='register' ng-show='!rootuser.username') Register
+               a(ui-sref='dashboard' ng-show='rootuser.username') Dashboard
+               a(href='' ng-click='logout()' ng-show='rootuser.username') Logout
