@@ -26,7 +26,7 @@
            h5.logo
              a.middle-logo(ui-sref='home' style='font-family: "Amaranth", sans-serif') teamstream
         .col-xs-6
-          .mobile-nav(style='text-align: right;')
+          .mobile-nav(ng-cloak style='text-align: right;')
                a(ui-sref='login' ng-show='!rootuser.username') Login
                a(ui-sref='register' ng-show='!rootuser.username') Register
                a(ui-sref='dashboard' ng-show='rootuser.username') Dashboard
