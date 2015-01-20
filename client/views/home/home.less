@@ -48,9 +48,27 @@
   padding: 10px;
 }
 
-#tutorial {
-  height: 600px;
+#tutorial_part_1 {
+  height: 500px;
   padding: 10px;
+
+  .content {
+    color: white;
+  }
+}
+
+#tutorial_part_2 {
+  background-color: white;
+  height: 615px;
+  padding: 10px;
+}
+
+#tutorial_part_3 {
+  height: 100%;
+  padding: 10px;
+  .content {
+    color: white;
+  }
 }
 
 .content {
@@ -67,13 +85,45 @@
   }
 
   .sample-project {
-    background-image: url('../../assets/images/tutorial.png');
+    background-image: url('../../assets/images/screenshots/shot1.png');
     background-repeat: no-repeat;
     background-size: cover;
+    background-position: center;
     width: 100%;
     border: 1px solid black;
     height: 600px;
   }
+}
+
+.tutorial-sizes {
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  width: 100%;
+  border: 1px solid black;
+}
+
+.create-a-project {
+  background-image: url('../../assets/images/screenshots/shot4.png');
+  .tutorial-sizes;
+  height: 400px;
+}
+
+.create-a-stream {
+  background-image: url('../../assets/images/screenshots/shot5.png');
+  background-repeat: no-repeat;
+  background-size: cover;
+  margin:0 auto;
+  width: 314px;
+  height: 514px;
+  border: 1px solid black;
+}
+
+
+.create-a-segment {
+  background-image: url('../../assets/images/screenshots/shot2.png');
+  .tutorial-sizes;
+  height: 600px;
 }
 
 
