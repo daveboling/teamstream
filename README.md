@@ -1,5 +1,6 @@
 #teamstream - collaboration simplified
 #####[Patch Notes](https://www.evernote.com/l/AP4e-p-uSaZPBJU6a75VQra--YTYP_PVY1I)
+#####[Demo](http://teamstream.daviddboling.com)
 
 #####By utilizing WebSockets, teamstream is a simplified stream and segment system that allows you and your team to collaborate in real time. From large scale to small scale, create as many stream or segments as needed. Once done, archive them to be viewed as a history or edit them as much as you like.
 ![photo1](https://raw.githubusercontent.com/kadowki/teamstream/master/client/assets/images/screenshots/shot1.png)
