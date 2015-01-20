@@ -1,9 +1,0 @@
-
-Pre HapiJS 8.0 Upgrade dependencies
------------------------------------
-good4.0.0
-good-console 2.0.1
-hapi 7.5.2
-hapi-auth-cookie 1.4.0
-joi 4.9.0
-lout 5.1.2
