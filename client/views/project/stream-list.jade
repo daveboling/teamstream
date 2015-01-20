@@ -64,7 +64,7 @@
                       textarea(ng-model='r.body')
     
                 //REPLY CONTROLS
-                a(href='' ng-hide='reply || !toggleButto`n' ng-click='reply = true') reply
+                a(href='' ng-hide='reply || !toggleButton' ng-click='reply = true') reply
                 a(href='' ng-show='reply' ng-click='reply = false; createReply(s.id);') submit 
                 span &nbsp;
                 a(href='' ng-show='reply' ng-click='reply = false; replyForm.body = ""') cancel
